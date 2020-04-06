@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
     
     # 7
     s.framework = "Foundation"
-    s.framework = "CommonCrypto"
+    s.framework = "Security"
     
     # 8
     s.source_files = "AdvancedLogger/**/*.{swift}"
