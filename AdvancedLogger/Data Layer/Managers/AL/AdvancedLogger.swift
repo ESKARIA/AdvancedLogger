@@ -46,4 +46,12 @@ extension AdvancedLogger: AdvancedLoggerProtocol {
                                  isEncrypted: self.encryptData,
                                  logType: type)
     }
+    
+    /// Get logs in string format
+    /// - Parameter completion: completion with string logs
+    public func getStringLogs(completion: @escaping (String?) -> Void) {
+        self.readManager.getStringLogs(isEncrypted: self.encryptData) { (logs) in
+            completion(logs)
+        }
+    }
 }

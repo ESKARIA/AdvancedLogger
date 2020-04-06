@@ -20,4 +20,7 @@ public protocol AdvancedLoggerProtocol {
     ///   - log: description log
     ///   - type: log type for view format in logfile
     func addNew(log: String, type: AdvancedLoggerEvent)
+    /// Get logs in string format
+    /// - Parameter completion: completion with string logs
+    func getStringLogs(completion: @escaping (String?) -> Void)
 }
