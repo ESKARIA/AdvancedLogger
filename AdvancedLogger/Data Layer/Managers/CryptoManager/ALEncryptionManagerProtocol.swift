@@ -9,14 +9,14 @@
 import Foundation
 
 /// Protocol for encrypting and decrypting data
-protocol ALEncryptionManagerProtocol {
+protocol ALCryptoManagerProtocol {
     
     /// Encrypt string with default key
     /// - Parameter string: encrypted data
     /// - Parameter completion: completion with optional data and optional error
-    mutating func encrypt(string: String, completion: @escaping (Data?, ALEncryptionManagerErrors?) -> Void)
+    mutating func encrypt(string: String, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void)
     /// decrypt data with default key
     /// - Parameter data: optional string
     /// - Parameter completion: completion with decrypted optional string and optional error
-    mutating func decrypt(data: Data?, completion: @escaping (String?, ALEncryptionManagerErrors?) -> Void)
+    mutating func decrypt(data: Data?, completion: @escaping (String?, ALCryptoManagerErrors?) -> Void)
 }

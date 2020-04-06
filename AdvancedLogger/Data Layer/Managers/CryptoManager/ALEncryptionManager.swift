@@ -9,10 +9,10 @@
 import Foundation
 import CommonCrypto
 
-// MARK: - ALEncryptionManager
+// MARK: - ALCryptoManager
 
 /// Manager for encrypting and decrypting data
-struct ALEncryptionManager {
+struct ALCryptoManager {
     
     private let initKey: String
     private let initIV: String
@@ -26,7 +26,7 @@ struct ALEncryptionManager {
         self.queue = DispatchQueue(label: queueLabel, qos: qos)
     }
     
-    private mutating func checkCryptoKeys(completion: @escaping (ALEncryptionManagerErrors?) -> Void) {
+    private mutating func checkCryptoKeys(completion: @escaping (ALCryptoManagerErrors?) -> Void) {
         guard initKey.count == kCCKeySizeAES128 || initKey.count == kCCKeySizeAES256, let keyData = initKey.data(using: .utf8) else {
             completion(.wrongKey)
             return
@@ -40,7 +40,7 @@ struct ALEncryptionManager {
         self.iv = ivData
     }
     
-    private mutating func crypt(data: Data?, option: CCOperation, completion: @escaping (Data?, ALEncryptionManagerErrors?) -> Void) {
+    private mutating func crypt(data: Data?, option: CCOperation, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void) {
         
         self.checkCryptoKeys { (error) in
             completion(nil, error)
@@ -83,14 +83,14 @@ struct ALEncryptionManager {
     }
 }
 
-// MARK: - ALEncryptionManagerProtocol
+// MARK: - ALCryptoManagerProtocol
 
-extension ALEncryptionManager: ALEncryptionManagerProtocol {
+extension ALCryptoManager: ALCryptoManagerProtocol {
     
     /// encrypt data with key
     /// - Parameter string: string to crypt
     /// - Parameter completion: completion with optional data and optional error
-    mutating func encrypt(string: String, completion: @escaping (Data?, ALEncryptionManagerErrors?) -> Void) {
+    mutating func encrypt(string: String, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void) {
         self.crypt(data: string.data(using: .utf8), option: CCOperation(kCCEncrypt), completion: {data, error in
             completion(data, error)
         })
@@ -99,7 +99,7 @@ extension ALEncryptionManager: ALEncryptionManagerProtocol {
     /// decrypt data with default key
     /// - Parameter data: data to decrypt
     /// - Parameter completion: completion with decrypted optional string and optional error
-    mutating func decrypt(data: Data?, completion: @escaping (String?, ALEncryptionManagerErrors?) -> Void) {
+    mutating func decrypt(data: Data?, completion: @escaping (String?, ALCryptoManagerErrors?) -> Void) {
         self.crypt(data: data, option: CCOperation(kCCDecrypt), completion: { decryptData, error in
             if let _resultData = decryptData {
                 let resultData = String(bytes: _resultData, encoding: .utf8)

@@ -15,6 +15,8 @@ protocol ALDIResolverComponentsProtocol {
     mutating func getALFileManager() -> ALFileDiskManagerProtocol
     /// Logger create and populate file with log
     mutating func getALPopulateManager() -> ALFilePopulateManagerProtocol
+    /// Logger crypto manager for encrypt and decrypt dsata
+    mutating func getALCryptoManager() -> ALCryptoManagerProtocol
 }
 
 /// DIResolver for components
@@ -22,12 +24,13 @@ struct ALDIResolver {
     
     private var alFileManager: ALFileDiskManagerProtocol?
     private var alPopulateManager: ALFilePopulateManagerProtocol?
+    private var alCryptoManager: ALCryptoManagerProtocol?
 }
 
 extension ALDIResolver: ALDIResolverComponentsProtocol {
     
     /// File manager for read and write data on disk
-    /// - Returns: return struct ALFileManagerProtocol
+    /// - Returns: disk manager
     mutating func getALFileManager() -> ALFileDiskManagerProtocol {
         if let _alFileManager = self.alFileManager {
             return _alFileManager
@@ -39,12 +42,26 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
     }
     
     /// Logger create and populate file with log
-    /// - Returns: manager
+    /// - Returns: populatte manager
     mutating func getALPopulateManager() -> ALFilePopulateManagerProtocol {
         if let _alFilePopulateManager = self.alPopulateManager {
             return _alFilePopulateManager
         }
-        self.alPopulateManager = ALFilePopulateManager(diskManager: self.getALFileManager())
+        self.alPopulateManager = ALFilePopulateManager(diskManager: self.getALFileManager(),
+                                                       cryptoManager: self.getALCryptoManager())
         return self.alPopulateManager!
+    }
+    
+    /// Logger crypto manager for encrypt and decrypt dsata
+    /// - Returns: crypto manager
+    mutating func getALCryptoManager() -> ALCryptoManagerProtocol {
+        if let _alCryptoManager = self.alCryptoManager {
+            return _alCryptoManager
+        }
+        self.alCryptoManager = ALCryptoManager(key: Constaints.Crypto.cryptoKey.rawValue,
+                                               iv: Constaints.Crypto.cryptoInitialVector.rawValue,
+                                               queueLabel: Constaints.Queue.queueCryptoOperationName.rawValue,
+                                               qos: .background)
+        return self.alCryptoManager!
     }
 }

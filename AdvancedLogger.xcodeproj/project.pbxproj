@@ -76,14 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D4251BAC243B04C4002A41D4 /* EncryptionManager */ = {
+		D4251BAC243B04C4002A41D4 /* CryptoManager */ = {
 			isa = PBXGroup;
 			children = (
 				D4251BAD243B04FF002A41D4 /* ALEncryptionManager.swift */,
 				D4251BAF243B050B002A41D4 /* ALEncryptionManagerProtocol.swift */,
 				D4251BB1243B0B38002A41D4 /* ALEncryptionManagerErrors.swift */,
 			);
-			path = EncryptionManager;
+			path = CryptoManager;
 			sourceTree = "<group>";
 		};
 		D4251BB3243B0F21002A41D4 /* Constaints */ = {
@@ -147,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				D47AF179243A73A00090DFAA /* AL */,
-				D4251BAC243B04C4002A41D4 /* EncryptionManager */,
+				D4251BAC243B04C4002A41D4 /* CryptoManager */,
 				D47AF16E243A6A780090DFAA /* FilePopulateManager */,
 				D47AF167243A63BF0090DFAA /* FileManager */,
 			);

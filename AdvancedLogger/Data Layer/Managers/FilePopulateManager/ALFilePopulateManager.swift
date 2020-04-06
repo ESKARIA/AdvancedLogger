@@ -14,9 +14,11 @@ import Foundation
 struct ALFilePopulateManager {
     
     private var diskManager: ALFileDiskManagerProtocol
+    private var cryptoManager: ALCryptoManagerProtocol
     
-    init(diskManager: ALFileDiskManagerProtocol) {
+    init(diskManager: ALFileDiskManagerProtocol, cryptoManager: ALCryptoManagerProtocol) {
         self.diskManager = diskManager
+        self.cryptoManager = cryptoManager
     }
     
     /// Return saved file size. Need to replace old data and keep user storage clean
