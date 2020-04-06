@@ -51,8 +51,8 @@ struct ALFilePopulateManager {
 
 extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
     
-    /// Add new log line
-    /// - Parameter log: your log
+    /// Add new log to file
+    /// - Parameter log: string with event's description
     func addNew(log: String) {
         
         let _log = self.addDebugData(to: log)
@@ -67,7 +67,7 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
         }
         
         self.diskManager.write(data: data) { (error) in
-        
+            
         }
     }
 }

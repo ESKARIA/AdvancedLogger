@@ -13,4 +13,7 @@ import Foundation
 /// Protocol for create data file that will be writed on disk
 protocol ALFilePopulateManagerProtocol {
     
+    /// Add new log to file
+    /// - Parameter log: string with event's description
+    func addNew(log: String)
 }

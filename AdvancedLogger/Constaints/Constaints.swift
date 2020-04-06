@@ -12,6 +12,5 @@ import Foundation
 enum Constaints: String {
     
     case documentDirectoryPath = "AdvancedLogger.txt"
-    case queueDiskOperationName = "com.AdvancedLogger.diskOperation"
     case logDateFormat = "MM-dd-yyyy HH:mm:ss"
 }
