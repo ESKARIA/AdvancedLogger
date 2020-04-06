@@ -14,9 +14,9 @@ protocol ALCryptoManagerProtocol {
     /// Encrypt string with default key
     /// - Parameter string: encrypted data
     /// - Parameter completion: completion with optional data and optional error
-    mutating func encrypt(string: String, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void)
+    func encrypt(string: String, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void)
     /// decrypt data with default key
     /// - Parameter data: optional string
     /// - Parameter completion: completion with decrypted optional string and optional error
-    mutating func decrypt(data: Data?, completion: @escaping (String?, ALCryptoManagerErrors?) -> Void)
+    func decrypt(data: Data?, completion: @escaping (String?, ALCryptoManagerErrors?) -> Void)
 }

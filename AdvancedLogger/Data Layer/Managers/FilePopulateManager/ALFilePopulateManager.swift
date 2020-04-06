@@ -31,7 +31,7 @@ struct ALFilePopulateManager {
     /// - Parameter log: string with your log
     /// - Returns: return result log
     private func addDebugData(to log: String) -> String {
-        "\(self.getCurrentDate()) \(log)"
+        "\(self.getCurrentDate()) \(log) \n"
     }
 }
 
@@ -46,10 +46,10 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
     /// - Parameter logType: log type for format in file
     /// - Parameter completion: completion with result optional data and optional error
     func populate(log: String,
-                  existData: Data?,
-                  isUsedEncryption: Bool,
-                  logType: AdvancedLoggerEvent,
-                  completion: @escaping (Data?, ALFilePopulateManagerErrors?) -> Void) {
+                           existData: Data?,
+                           isUsedEncryption: Bool,
+                           logType: AdvancedLoggerEvent,
+                           completion: @escaping (Data?, ALFilePopulateManagerErrors?) -> Void) {
         
         let _log = self.addDebugData(to: log)
         var data = Data()
@@ -57,8 +57,18 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
             data = _data
         }
         
-        if let newLog = _log.data(using: .utf8) {
+        if isUsedEncryption {
+            self.cryptoManager.encrypt(string: _log) { (encryptedData, error) in
+                if let encryptedData = encryptedData {
+                    data += encryptedData
+                } else if let error = error {
+                    completion(nil, .encryptError(error: error))
+                    return
+                }
+            }
+        } else if let newLog = _log.data(using: .utf8) {
             data += newLog
         }
+        completion(data, nil)
     }
 }

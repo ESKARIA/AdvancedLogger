@@ -14,38 +14,34 @@ import CommonCrypto
 /// Manager for encrypting and decrypting data
 struct ALCryptoManager {
     
-    private let initKey: String
-    private let initIV: String
     private var key: Data!
     private var iv: Data!
     private var queue: DispatchQueue
     
-    init?(key: String, iv: String, queueLabel: String, qos: DispatchQoS) {
-        self.initKey = key
-        self.initIV  = iv
+    init?(initKey: String, initIV: String, queueLabel: String, qos: DispatchQoS) {
+        
+        var keyData: Data
+        var ivData: Data
+        
+        if initKey.count == kCCKeySizeAES128 || initKey.count == kCCKeySizeAES256, let _keyData = initKey.data(using: .utf8) {
+            keyData = _keyData
+        } else {
+            keyData = Constaints.Crypto.cryptoKey.rawValue.data(using: .utf8)!
+        }
+        
+        if initIV.count == kCCBlockSizeAES128, let _ivData = initIV.data(using: .utf8) {
+            ivData = _ivData
+        } else {
+            ivData = Constaints.Crypto.cryptoKey.rawValue.data(using: .utf8)!
+        }
+        
+        self.key = keyData
+        self.iv = ivData
+        
         self.queue = DispatchQueue(label: queueLabel, qos: qos)
     }
     
-    private mutating func checkCryptoKeys(completion: @escaping (ALCryptoManagerErrors?) -> Void) {
-        guard initKey.count == kCCKeySizeAES128 || initKey.count == kCCKeySizeAES256, let keyData = initKey.data(using: .utf8) else {
-            completion(.wrongKey)
-            return
-        }
-        
-        guard initIV.count == kCCBlockSizeAES128, let ivData = initIV.data(using: .utf8) else {
-            completion(.wrongInitalVector)
-            return
-        }
-        self.key = keyData
-        self.iv = ivData
-    }
-    
-    private mutating func crypt(data: Data?, option: CCOperation, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void) {
-        
-        self.checkCryptoKeys { (error) in
-            completion(nil, error)
-            return
-        }
+    private func crypt(data: Data?, option: CCOperation, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void) {
         
         self.queue.async { [self] in
             
@@ -53,7 +49,6 @@ struct ALCryptoManager {
                 completion(nil, .emptyData)
                 return
             }
-            
             let cryptLength = data.count + kCCBlockSizeAES128
             var cryptData   = Data(count: cryptLength)
             
@@ -90,7 +85,7 @@ extension ALCryptoManager: ALCryptoManagerProtocol {
     /// encrypt data with key
     /// - Parameter string: string to crypt
     /// - Parameter completion: completion with optional data and optional error
-    mutating func encrypt(string: String, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void) {
+    func encrypt(string: String, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void) {
         self.crypt(data: string.data(using: .utf8), option: CCOperation(kCCEncrypt), completion: {data, error in
             completion(data, error)
         })
@@ -99,7 +94,7 @@ extension ALCryptoManager: ALCryptoManagerProtocol {
     /// decrypt data with default key
     /// - Parameter data: data to decrypt
     /// - Parameter completion: completion with decrypted optional string and optional error
-    mutating func decrypt(data: Data?, completion: @escaping (String?, ALCryptoManagerErrors?) -> Void) {
+    func decrypt(data: Data?, completion: @escaping (String?, ALCryptoManagerErrors?) -> Void) {
         self.crypt(data: data, option: CCOperation(kCCDecrypt), completion: { decryptData, error in
             if let _resultData = decryptData {
                 let resultData = String(bytes: _resultData, encoding: .utf8)

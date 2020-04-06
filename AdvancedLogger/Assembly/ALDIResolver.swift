@@ -63,8 +63,8 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
         if let _alCryptoManager = self.alCryptoManager {
             return _alCryptoManager
         }
-        self.alCryptoManager = ALCryptoManager(key: Constaints.Crypto.cryptoKey.rawValue,
-                                               iv: Constaints.Crypto.cryptoInitialVector.rawValue,
+        self.alCryptoManager = ALCryptoManager(initKey: Constaints.Crypto.cryptoKey.rawValue,
+                                               initIV: Constaints.Crypto.cryptoInitialVector.rawValue,
                                                queueLabel: Constaints.Queue.queueCryptoOperationName.rawValue,
                                                qos: .background)
         return self.alCryptoManager!
