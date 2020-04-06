@@ -11,4 +11,5 @@ import Foundation
 /// Protocol for manager that get log from disk, decrypt it if needed and return
 protocol ALLogReadManagerProtocol {
     
+    func getStringLogs(isEncrypted: Bool, completion: @escaping (String?) -> Void)
 }

@@ -43,7 +43,7 @@ extension AdvancedLogger: AdvancedLoggerProtocol {
     ///   - type: log type for view format in logfile
     public func addNew(log: String, type: AdvancedLoggerEvent) {
         self.writeManager.addNew(log: log,
-                                 isUsedEncryption: self.encryptData,
+                                 isEncrypted: self.encryptData,
                                  logType: type)
     }
 }

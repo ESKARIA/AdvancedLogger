@@ -18,6 +18,6 @@ protocol ALLogWriteManagerProtocol {
     /// - Parameter logType: log type for format in file
     /// - Parameter completion: completion with result optional data and optional error
     func addNew(log: String,
-                isUsedEncryption: Bool,
+                isEncrypted: Bool,
                 logType: AdvancedLoggerEvent)
 }
