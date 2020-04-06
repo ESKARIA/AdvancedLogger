@@ -10,6 +10,7 @@ import Foundation
 
 extension Constaints {
     
+    /// Default crypto keys for encrypt logs
     enum Crypto: String {
         case cryptoKey = "cryptoKey"
         case cryptoInitialVector = "cryptoInitialVector"

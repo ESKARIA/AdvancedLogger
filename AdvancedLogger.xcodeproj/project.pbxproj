@@ -12,6 +12,12 @@
 		D4251BB2243B0B38002A41D4 /* ALEncryptionManagerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB1243B0B38002A41D4 /* ALEncryptionManagerErrors.swift */; };
 		D4251BB5243B0F31002A41D4 /* Constaints+QueueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB4243B0F31002A41D4 /* Constaints+QueueName.swift */; };
 		D4251BB7243B0F4E002A41D4 /* Constaints+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB6243B0F4E002A41D4 /* Constaints+Crypto.swift */; };
+		D4251BBA243B1ABE002A41D4 /* ALLogReadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB9243B1ABE002A41D4 /* ALLogReadManager.swift */; };
+		D4251BBC243B1AE1002A41D4 /* ALLogReadManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BBB243B1AE1002A41D4 /* ALLogReadManagerProtocol.swift */; };
+		D4251BBF243B1C19002A41D4 /* ALLogWriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BBE243B1C19002A41D4 /* ALLogWriteManager.swift */; };
+		D4251BC1243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BC0243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift */; };
+		D4251BC3243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BC2243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift */; };
+		D4251BC5243B24DF002A41D4 /* AdvancedLoggerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BC4243B24DF002A41D4 /* AdvancedLoggerEvent.swift */; };
 		D47AF155243A63AA0090DFAA /* AdvancedLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */; };
 		D47AF15A243A63AA0090DFAA /* AdvancedLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF159243A63AA0090DFAA /* AdvancedLoggerTests.swift */; };
 		D47AF15C243A63AA0090DFAA /* AdvancedLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = D47AF14E243A63AA0090DFAA /* AdvancedLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,6 +47,12 @@
 		D4251BB1243B0B38002A41D4 /* ALEncryptionManagerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManagerErrors.swift; sourceTree = "<group>"; };
 		D4251BB4243B0F31002A41D4 /* Constaints+QueueName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constaints+QueueName.swift"; sourceTree = "<group>"; };
 		D4251BB6243B0F4E002A41D4 /* Constaints+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constaints+Crypto.swift"; sourceTree = "<group>"; };
+		D4251BB9243B1ABE002A41D4 /* ALLogReadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALLogReadManager.swift; sourceTree = "<group>"; };
+		D4251BBB243B1AE1002A41D4 /* ALLogReadManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALLogReadManagerProtocol.swift; sourceTree = "<group>"; };
+		D4251BBE243B1C19002A41D4 /* ALLogWriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALLogWriteManager.swift; sourceTree = "<group>"; };
+		D4251BC0243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALLogWriteManagerProtocol.swift; sourceTree = "<group>"; };
+		D4251BC2243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFilePopulateManagerErrors.swift; sourceTree = "<group>"; };
+		D4251BC4243B24DF002A41D4 /* AdvancedLoggerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerEvent.swift; sourceTree = "<group>"; };
 		D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdvancedLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47AF14E243A63AA0090DFAA /* AdvancedLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedLogger.h; sourceTree = "<group>"; };
 		D47AF14F243A63AA0090DFAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +108,24 @@
 			path = Constaints;
 			sourceTree = "<group>";
 		};
+		D4251BB8243B1A4B002A41D4 /* LogReadManager */ = {
+			isa = PBXGroup;
+			children = (
+				D4251BB9243B1ABE002A41D4 /* ALLogReadManager.swift */,
+				D4251BBB243B1AE1002A41D4 /* ALLogReadManagerProtocol.swift */,
+			);
+			path = LogReadManager;
+			sourceTree = "<group>";
+		};
+		D4251BBD243B1C08002A41D4 /* LogWriteManager */ = {
+			isa = PBXGroup;
+			children = (
+				D4251BBE243B1C19002A41D4 /* ALLogWriteManager.swift */,
+				D4251BC0243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift */,
+			);
+			path = LogWriteManager;
+			sourceTree = "<group>";
+		};
 		D47AF141243A63AA0090DFAA = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				D47AF179243A73A00090DFAA /* AL */,
+				D4251BBD243B1C08002A41D4 /* LogWriteManager */,
+				D4251BB8243B1A4B002A41D4 /* LogReadManager */,
 				D4251BAC243B04C4002A41D4 /* CryptoManager */,
 				D47AF16E243A6A780090DFAA /* FilePopulateManager */,
 				D47AF167243A63BF0090DFAA /* FileManager */,
@@ -168,6 +200,7 @@
 			children = (
 				D47AF16F243A6A890090DFAA /* ALFilePopulateManager.swift */,
 				D47AF173243A6B4B0090DFAA /* ALFilePopulateManagerProtocol.swift */,
+				D4251BC2243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift */,
 			);
 			path = FilePopulateManager;
 			sourceTree = "<group>";
@@ -185,6 +218,7 @@
 			children = (
 				D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */,
 				D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */,
+				D4251BC4243B24DF002A41D4 /* AdvancedLoggerEvent.swift */,
 			);
 			path = AL;
 			sourceTree = "<group>";
@@ -302,14 +336,20 @@
 				D4251BB5243B0F31002A41D4 /* Constaints+QueueName.swift in Sources */,
 				D47AF172243A6B380090DFAA /* ALFileManagerProtocol.swift in Sources */,
 				D4251BB2243B0B38002A41D4 /* ALEncryptionManagerErrors.swift in Sources */,
+				D4251BBA243B1ABE002A41D4 /* ALLogReadManager.swift in Sources */,
 				D47AF170243A6A890090DFAA /* ALFilePopulateManager.swift in Sources */,
 				D47AF177243A6C150090DFAA /* ALDIResolver.swift in Sources */,
 				D4251BB0243B050B002A41D4 /* ALEncryptionManagerProtocol.swift in Sources */,
+				D4251BBF243B1C19002A41D4 /* ALLogWriteManager.swift in Sources */,
 				D47AF17B243A73B80090DFAA /* AdvancedLogger.swift in Sources */,
 				D47AF16B243A63E30090DFAA /* ALFileDiskManager.swift in Sources */,
+				D4251BBC243B1AE1002A41D4 /* ALLogReadManagerProtocol.swift in Sources */,
+				D4251BC3243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift in Sources */,
 				D47AF174243A6B4B0090DFAA /* ALFilePopulateManagerProtocol.swift in Sources */,
+				D4251BC1243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift in Sources */,
 				D4251BB7243B0F4E002A41D4 /* Constaints+Crypto.swift in Sources */,
 				D47AF16D243A66E90090DFAA /* Constaints.swift in Sources */,
+				D4251BC5243B24DF002A41D4 /* AdvancedLoggerEvent.swift in Sources */,
 				D47AF17F243A743A0090DFAA /* AdvancedLoggerProtocol.swift in Sources */,
 				D4251BAE243B04FF002A41D4 /* ALEncryptionManager.swift in Sources */,
 			);

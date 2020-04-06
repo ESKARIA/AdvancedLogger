@@ -18,7 +18,7 @@ struct ALCryptoManager {
     private let initIV: String
     private var key: Data!
     private var iv: Data!
-    private var queue: DispatchQueue!
+    private var queue: DispatchQueue
     
     init?(key: String, iv: String, queueLabel: String, qos: DispatchQoS) {
         self.initKey = key

@@ -10,6 +10,7 @@ import Foundation
 
 extension Constaints {
     
+    /// Name of queue for DispatchQueue init with custom label
     enum Queue: String {
         case queueAdvancedLogger = "com.AdvancedLogger.main"
         case queueDiskOperationName = "com.AdvancedLogger.diskOperation"

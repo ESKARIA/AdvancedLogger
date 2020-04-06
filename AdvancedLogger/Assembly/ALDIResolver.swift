@@ -17,11 +17,17 @@ protocol ALDIResolverComponentsProtocol {
     mutating func getALPopulateManager() -> ALFilePopulateManagerProtocol
     /// Logger crypto manager for encrypt and decrypt dsata
     mutating func getALCryptoManager() -> ALCryptoManagerProtocol
+    /// Logger write manager for write logs
+    mutating func getALLogWriteManager() -> ALLogWriteManagerProtocol
+    /// Logger read manager for get logs file (or logs)
+    mutating func getALLogReadManager() -> ALLogReadManagerProtocol
 }
 
 /// DIResolver for components
 struct ALDIResolver {
     
+    private var alLogWriteManager: ALLogWriteManagerProtocol?
+    private var alLogReadManager: ALLogReadManagerProtocol?
     private var alFileManager: ALFileDiskManagerProtocol?
     private var alPopulateManager: ALFilePopulateManagerProtocol?
     private var alCryptoManager: ALCryptoManagerProtocol?
@@ -47,8 +53,7 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
         if let _alFilePopulateManager = self.alPopulateManager {
             return _alFilePopulateManager
         }
-        self.alPopulateManager = ALFilePopulateManager(diskManager: self.getALFileManager(),
-                                                       cryptoManager: self.getALCryptoManager())
+        self.alPopulateManager = ALFilePopulateManager(cryptoManager: self.getALCryptoManager())
         return self.alPopulateManager!
     }
     
@@ -63,5 +68,31 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
                                                queueLabel: Constaints.Queue.queueCryptoOperationName.rawValue,
                                                qos: .background)
         return self.alCryptoManager!
+    }
+    
+    /// get manager for write log on disk
+    /// - Returns: write manager
+    mutating func getALLogWriteManager() -> ALLogWriteManagerProtocol {
+        if let _alLogWriteManager = self.alLogWriteManager {
+            return _alLogWriteManager
+        }
+        self.alLogWriteManager = ALLogWriteManager(diskManager: self.getALFileManager(),
+                                                   populateManager: self.getALPopulateManager(),
+                                                   queueLabel: Constaints.Queue.queueAdvancedLogger.rawValue,
+                                                   qos: .utility)
+        return self.alLogWriteManager!
+    }
+    
+    /// get manager for read log from disk
+    /// - Returns: read manager
+    mutating func getALLogReadManager() -> ALLogReadManagerProtocol {
+        if let _alLogReadManager = self.alLogReadManager {
+            return _alLogReadManager
+        }
+        self.alLogReadManager = ALLogReadManager(diskManager: self.getALFileManager(),
+                                                 cryptoManager: self.getALCryptoManager(),
+                                                 queueLabel: Constaints.Queue.queueAdvancedLogger.rawValue,
+                                                 qos: .utility)
+        return self.alLogReadManager!
     }
 }

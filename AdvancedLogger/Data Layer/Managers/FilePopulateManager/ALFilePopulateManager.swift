@@ -13,24 +13,10 @@ import Foundation
 /// Manager for create data file that will be writed on disk
 struct ALFilePopulateManager {
     
-    private var diskManager: ALFileDiskManagerProtocol
     private var cryptoManager: ALCryptoManagerProtocol
     
-    init(diskManager: ALFileDiskManagerProtocol, cryptoManager: ALCryptoManagerProtocol) {
-        self.diskManager = diskManager
+    init(cryptoManager: ALCryptoManagerProtocol) {
         self.cryptoManager = cryptoManager
-    }
-    
-    /// Return saved file size. Need to replace old data and keep user storage clean
-    /// - Returns: file size
-    private func getSizeFile() -> Int {
-        var result = 0
-        self.diskManager.read { data in
-            if let data = data {
-                result = data.count
-            }
-        }
-        return result
     }
     
     /// get current date with needed format
@@ -55,21 +41,24 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
     
     /// Add new log to file
     /// - Parameter log: string with event's description
-    func addNew(log: String) {
+    /// - Parameter existData: exist data in log file
+    /// - Parameter isUsedEncryption: do you use encryption for logs
+    /// - Parameter logType: log type for format in file
+    /// - Parameter completion: completion with result optional data and optional error
+    func populate(log: String,
+                  existData: Data?,
+                  isUsedEncryption: Bool,
+                  logType: AdvancedLoggerEvent,
+                  completion: @escaping (Data?, ALFilePopulateManagerErrors?) -> Void) {
         
         let _log = self.addDebugData(to: log)
         var data = Data()
-        self.diskManager.read { (returnData) in
-            if let _data = returnData {
-                data = _data
-            }
-        }
-        if let newLog = _log.data(using: .utf8) {
-            data += newLog
+        if let _data = existData {
+            data = _data
         }
         
-        self.diskManager.write(data: data) { (error) in
-            
+        if let newLog = _log.data(using: .utf8) {
+            data += newLog
         }
     }
 }

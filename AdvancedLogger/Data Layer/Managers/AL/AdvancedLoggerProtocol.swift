@@ -11,4 +11,13 @@ import Foundation
 /// Main protocol requeriment for interact with your app
 public protocol AdvancedLoggerProtocol {
     
+    /// Do you need encrypt data?
+    var encryptData: Bool { get set }
+    /// set log's file size in byte. Default is 4096
+    var logFileSize: Int { get set}
+    /// Add new log to log file
+    /// - Parameters:
+    ///   - log: description log
+    ///   - type: log type for view format in logfile
+    func addNew(log: String, type: AdvancedLoggerEvent)
 }
