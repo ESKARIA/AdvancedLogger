@@ -41,9 +41,9 @@ struct ALCryptoManager {
         self.queue = DispatchQueue(label: queueLabel, qos: qos)
     }
     
-    private func crypt(data: Data?, option: CCOperation, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void) {
+    private func crypt(data: Data?, option: CCOperation, completion: (Data?, ALCryptoManagerErrors?) -> Void) {
         
-        self.queue.async { [self] in
+        self.queue.sync { [self] in
             
             guard let data = data else {
                 completion(nil, .emptyData)
@@ -85,7 +85,7 @@ extension ALCryptoManager: ALCryptoManagerProtocol {
     /// encrypt data with key
     /// - Parameter string: string to crypt
     /// - Parameter completion: completion with optional data and optional error
-    func encrypt(string: String, completion: @escaping (Data?, ALCryptoManagerErrors?) -> Void) {
+    func encrypt(string: String, completion: (Data?, ALCryptoManagerErrors?) -> Void) {
         self.crypt(data: string.data(using: .utf8), option: CCOperation(kCCEncrypt), completion: {data, error in
             completion(data, error)
         })
@@ -94,7 +94,7 @@ extension ALCryptoManager: ALCryptoManagerProtocol {
     /// decrypt data with default key
     /// - Parameter data: data to decrypt
     /// - Parameter completion: completion with decrypted optional string and optional error
-    func decrypt(data: Data?, completion: @escaping (String?, ALCryptoManagerErrors?) -> Void) {
+    func decrypt(data: Data?, completion: (String?, ALCryptoManagerErrors?) -> Void) {
         self.crypt(data: data, option: CCOperation(kCCDecrypt), completion: { decryptData, error in
             if let _resultData = decryptData {
                 let resultData = String(bytes: _resultData, encoding: .utf8)

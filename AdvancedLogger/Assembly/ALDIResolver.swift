@@ -41,9 +41,7 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
         if let _alFileManager = self.alFileManager {
             return _alFileManager
         }
-        self.alFileManager = ALFileDiskManager(queueLabel: Constaints.Queue.queueDiskOperationName.rawValue,
-                                               qos: .background,
-                                               directoryPath: Constaints.documentDirectoryPath.rawValue)
+        self.alFileManager = ALFileDiskManager(directoryPath: Constaints.documentDirectoryPath.rawValue)
         return self.alFileManager!
     }
     
@@ -78,7 +76,7 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
         }
         self.alLogWriteManager = ALLogWriteManager(diskManager: self.getALFileManager(),
                                                    populateManager: self.getALPopulateManager(),
-                                                   queueLabel: Constaints.Queue.queueAdvancedLogger.rawValue,
+                                                   queueLabel: Constaints.Queue.queueDiskOperationName.rawValue,
                                                    qos: .utility)
         return self.alLogWriteManager!
     }
@@ -91,7 +89,7 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
         }
         self.alLogReadManager = ALLogReadManager(diskManager: self.getALFileManager(),
                                                  cryptoManager: self.getALCryptoManager(),
-                                                 queueLabel: Constaints.Queue.queueAdvancedLogger.rawValue,
+                                                 queueLabel: Constaints.Queue.queueDiskOperationName.rawValue,
                                                  qos: .utility)
         return self.alLogReadManager!
     }

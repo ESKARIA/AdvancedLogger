@@ -54,19 +54,26 @@ extension ALLogWriteManager: ALLogWriteManagerProtocol {
     func addNew(log: String,
                 isEncrypted: Bool,
                 logType: AdvancedLoggerEvent) {
-        
-        self.diskManager.read { (data) in
-            self.queue.async {
-                self.populateManager.populate(log: log,
-                                              existData: data,
-                                              isUsedEncryption: isEncrypted,
-                                              logType: logType) { (data, error) in
-                                                if error == nil, data != nil {
-                                                    self.writeOnDisk(data: data)
-                                                } else {
-                                                    // fetch populate error
-                                                }
+        self.queue.sync {
+            self.diskManager.read { (data) in
+                    self.populateManager.populate(log: log,
+                                                  existData: data,
+                                                  isUsedEncryption: isEncrypted,
+                                                  logType: logType) { (data, error) in
+                                                    if error == nil, data != nil {
+                                                        self.writeOnDisk(data: data)
+                                                    } else {
+                                                        // fetch populate error
+                                                    }
+                    }
                 }
+        }
+    }
+    
+    func cleanAll() {
+        self.queue.sync {
+            self.diskManager.clean { (error) in
+                   
             }
         }
     }

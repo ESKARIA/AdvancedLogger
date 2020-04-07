@@ -31,9 +31,8 @@ struct ALLogReadManager {
 
 extension ALLogReadManager: ALLogReadManagerProtocol {
     func getStringLogs(isEncrypted: Bool, completion: @escaping (String?) -> Void) {
-        self.diskManager.read { (data) in
-            self.queue.async {
-                
+        self.queue.sync {
+            self.diskManager.read { (data) in
                 if let data = data {
                     if isEncrypted {
                         self.cryptoManager.decrypt(data: data) { (log, error) in

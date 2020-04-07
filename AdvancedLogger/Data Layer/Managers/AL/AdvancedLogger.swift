@@ -16,6 +16,7 @@ public struct AdvancedLogger {
     init() {
         self.writeManager = diresolver.getALLogWriteManager()
         self.readManager = diresolver.getALLogReadManager()
+        self.queue = DispatchQueue(label: Constaints.Queue.queueAdvancedLogger.rawValue, qos: .utility)
     }
     
     //public
@@ -30,6 +31,7 @@ public struct AdvancedLogger {
     private var diresolver: ALDIResolverComponentsProtocol = ALDIResolver()
     private var writeManager: ALLogWriteManagerProtocol
     private var readManager: ALLogReadManagerProtocol
+    private var queue: DispatchQueue!
     
 }
 
@@ -42,16 +44,27 @@ extension AdvancedLogger: AdvancedLoggerProtocol {
     ///   - log: description log
     ///   - type: log type for view format in logfile
     public func addNew(log: String, type: AdvancedLoggerEvent) {
-        self.writeManager.addNew(log: log,
-                                 isEncrypted: self.encryptData,
-                                 logType: type)
+        self.queue.async {
+            self.writeManager.addNew(log: log,
+                                     isEncrypted: self.encryptData,
+                                     logType: type)
+        }
     }
     
     /// Get logs in string format
     /// - Parameter completion: completion with string logs
     public func getStringLogs(completion: @escaping (String?) -> Void) {
-        self.readManager.getStringLogs(isEncrypted: self.encryptData) { (logs) in
-            completion(logs)
+        self.queue.async {
+            self.readManager.getStringLogs(isEncrypted: self.encryptData) { (logs) in
+                completion(logs)
+            }
+        }
+    }
+    
+    /// Clean all logs
+    public func cleanLogs() {
+        self.queue.async {
+            self.writeManager.cleanAll()
         }
     }
 }

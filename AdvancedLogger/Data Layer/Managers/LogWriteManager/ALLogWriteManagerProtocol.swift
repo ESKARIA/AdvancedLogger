@@ -20,4 +20,6 @@ protocol ALLogWriteManagerProtocol {
     func addNew(log: String,
                 isEncrypted: Bool,
                 logType: AdvancedLoggerEvent)
+    /// Clean all logs
+    func cleanAll()
 }

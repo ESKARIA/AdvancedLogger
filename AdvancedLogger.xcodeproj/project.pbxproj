@@ -18,6 +18,13 @@
 		D4251BC1243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BC0243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift */; };
 		D4251BC3243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BC2243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift */; };
 		D4251BC5243B24DF002A41D4 /* AdvancedLoggerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BC4243B24DF002A41D4 /* AdvancedLoggerEvent.swift */; };
+		D47AC554243C5AA90044B94C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AC553243C5AA90044B94C /* AppDelegate.swift */; };
+		D47AC558243C5AA90044B94C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AC557243C5AA90044B94C /* ViewController.swift */; };
+		D47AC55B243C5AA90044B94C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AC559243C5AA90044B94C /* Main.storyboard */; };
+		D47AC55D243C5AAA0044B94C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D47AC55C243C5AAA0044B94C /* Assets.xcassets */; };
+		D47AC560243C5AAA0044B94C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AC55E243C5AAA0044B94C /* LaunchScreen.storyboard */; };
+		D47AC567243C5B390044B94C /* AdvancedLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */; };
+		D47AC568243C5B390044B94C /* AdvancedLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D47AF155243A63AA0090DFAA /* AdvancedLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */; };
 		D47AF15A243A63AA0090DFAA /* AdvancedLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF159243A63AA0090DFAA /* AdvancedLoggerTests.swift */; };
 		D47AF15C243A63AA0090DFAA /* AdvancedLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = D47AF14E243A63AA0090DFAA /* AdvancedLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D47AC569243C5B390044B94C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D47AF142243A63AA0090DFAA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D47AF14A243A63AA0090DFAA;
+			remoteInfo = AdvancedLogger;
+		};
 		D47AF156243A63AA0090DFAA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D47AF142243A63AA0090DFAA /* Project object */;
@@ -40,6 +54,20 @@
 			remoteInfo = AdvancedLogger;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D47AC56B243C5B3A0044B94C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D47AC568243C5B390044B94C /* AdvancedLogger.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D4251BAD243B04FF002A41D4 /* ALEncryptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManager.swift; sourceTree = "<group>"; };
@@ -53,6 +81,13 @@
 		D4251BC0243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALLogWriteManagerProtocol.swift; sourceTree = "<group>"; };
 		D4251BC2243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFilePopulateManagerErrors.swift; sourceTree = "<group>"; };
 		D4251BC4243B24DF002A41D4 /* AdvancedLoggerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerEvent.swift; sourceTree = "<group>"; };
+		D47AC551243C5AA90044B94C /* AdvancedLoggerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvancedLoggerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D47AC553243C5AA90044B94C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D47AC557243C5AA90044B94C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D47AC55A243C5AA90044B94C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D47AC55C243C5AAA0044B94C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D47AC55F243C5AAA0044B94C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D47AC561243C5AAA0044B94C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdvancedLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47AF14E243A63AA0090DFAA /* AdvancedLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedLogger.h; sourceTree = "<group>"; };
 		D47AF14F243A63AA0090DFAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +105,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D47AC54E243C5AA90044B94C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D47AC567243C5B390044B94C /* AdvancedLogger.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D47AF148243A63AA0090DFAA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,12 +169,34 @@
 			path = LogWriteManager;
 			sourceTree = "<group>";
 		};
+		D47AC552243C5AA90044B94C /* AdvancedLoggerExample */ = {
+			isa = PBXGroup;
+			children = (
+				D47AC553243C5AA90044B94C /* AppDelegate.swift */,
+				D47AC557243C5AA90044B94C /* ViewController.swift */,
+				D47AC559243C5AA90044B94C /* Main.storyboard */,
+				D47AC55C243C5AAA0044B94C /* Assets.xcassets */,
+				D47AC55E243C5AAA0044B94C /* LaunchScreen.storyboard */,
+				D47AC561243C5AAA0044B94C /* Info.plist */,
+			);
+			path = AdvancedLoggerExample;
+			sourceTree = "<group>";
+		};
+		D47AC566243C5B390044B94C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D47AF141243A63AA0090DFAA = {
 			isa = PBXGroup;
 			children = (
 				D47AF14D243A63AA0090DFAA /* AdvancedLogger */,
 				D47AF158243A63AA0090DFAA /* AdvancedLoggerTests */,
+				D47AC552243C5AA90044B94C /* AdvancedLoggerExample */,
 				D47AF14C243A63AA0090DFAA /* Products */,
+				D47AC566243C5B390044B94C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +205,7 @@
 			children = (
 				D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */,
 				D47AF154243A63AA0090DFAA /* AdvancedLoggerTests.xctest */,
+				D47AC551243C5AA90044B94C /* AdvancedLoggerExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,6 +303,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		D47AC550243C5AA90044B94C /* AdvancedLoggerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D47AC564243C5AAA0044B94C /* Build configuration list for PBXNativeTarget "AdvancedLoggerExample" */;
+			buildPhases = (
+				D47AC54D243C5AA90044B94C /* Sources */,
+				D47AC54E243C5AA90044B94C /* Frameworks */,
+				D47AC54F243C5AA90044B94C /* Resources */,
+				D47AC56B243C5B3A0044B94C /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D47AC56A243C5B390044B94C /* PBXTargetDependency */,
+			);
+			name = AdvancedLoggerExample;
+			productName = AdvancedLoggerExample;
+			productReference = D47AC551243C5AA90044B94C /* AdvancedLoggerExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D47AF14A243A63AA0090DFAA /* AdvancedLogger */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D47AF15F243A63AA0090DFAA /* Build configuration list for PBXNativeTarget "AdvancedLogger" */;
@@ -283,6 +368,9 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Dmitriy Toropkin";
 				TargetAttributes = {
+					D47AC550243C5AA90044B94C = {
+						CreatedOnToolsVersion = 11.4;
+					};
 					D47AF14A243A63AA0090DFAA = {
 						CreatedOnToolsVersion = 11.4;
 						LastSwiftMigration = 1140;
@@ -307,11 +395,22 @@
 			targets = (
 				D47AF14A243A63AA0090DFAA /* AdvancedLogger */,
 				D47AF153243A63AA0090DFAA /* AdvancedLoggerTests */,
+				D47AC550243C5AA90044B94C /* AdvancedLoggerExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D47AC54F243C5AA90044B94C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D47AC560243C5AAA0044B94C /* LaunchScreen.storyboard in Resources */,
+				D47AC55D243C5AAA0044B94C /* Assets.xcassets in Resources */,
+				D47AC55B243C5AA90044B94C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D47AF149243A63AA0090DFAA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,6 +428,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D47AC54D243C5AA90044B94C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D47AC558243C5AA90044B94C /* ViewController.swift in Sources */,
+				D47AC554243C5AA90044B94C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D47AF147243A63AA0090DFAA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +474,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D47AC56A243C5B390044B94C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D47AF14A243A63AA0090DFAA /* AdvancedLogger */;
+			targetProxy = D47AC569243C5B390044B94C /* PBXContainerItemProxy */;
+		};
 		D47AF157243A63AA0090DFAA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D47AF14A243A63AA0090DFAA /* AdvancedLogger */;
@@ -373,7 +486,62 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		D47AC559243C5AA90044B94C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D47AC55A243C5AA90044B94C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D47AC55E243C5AAA0044B94C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D47AC55F243C5AAA0044B94C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		D47AC562243C5AAA0044B94C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2W82R63KFN;
+				INFOPLIST_FILE = AdvancedLoggerExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DmitriyToropkin.AdvancedLoggerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D47AC563243C5AAA0044B94C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2W82R63KFN;
+				INFOPLIST_FILE = AdvancedLoggerExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DmitriyToropkin.AdvancedLoggerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D47AF15D243A63AA0090DFAA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -588,6 +756,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D47AC564243C5AAA0044B94C /* Build configuration list for PBXNativeTarget "AdvancedLoggerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D47AC562243C5AAA0044B94C /* Debug */,
+				D47AC563243C5AAA0044B94C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D47AF145243A63AA0090DFAA /* Build configuration list for PBXProject "AdvancedLogger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

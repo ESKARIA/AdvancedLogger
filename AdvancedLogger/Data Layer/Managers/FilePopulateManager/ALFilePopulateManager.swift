@@ -49,7 +49,7 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
                            existData: Data?,
                            isUsedEncryption: Bool,
                            logType: AdvancedLoggerEvent,
-                           completion: @escaping (Data?, ALFilePopulateManagerErrors?) -> Void) {
+                           completion: (Data?, ALFilePopulateManagerErrors?) -> Void) {
         
         let _log = self.addDebugData(to: log)
         var data = Data()

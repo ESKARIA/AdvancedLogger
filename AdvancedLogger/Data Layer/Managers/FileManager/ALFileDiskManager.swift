@@ -13,11 +13,9 @@ import Foundation
 /// Manager for write and read file from bundle
 struct ALFileDiskManager {
     
-    private var queue: DispatchQueue!
     private var directoryPath: String
     
-    init(queueLabel: String, qos: DispatchQoS, directoryPath: String) {
-        self.queue = DispatchQueue(label: queueLabel, qos: qos)
+    init(directoryPath: String) {
         self.directoryPath = directoryPath
     }
     
@@ -35,35 +33,31 @@ extension ALFileDiskManager: ALFileDiskManagerProtocol {
     /// - Parameters:
     ///   - data: data that need to be writed
     ///   - completion: completion block with optional Error
-    func write(data: Data, completion: @escaping (Error?) -> Void) {
-        queue.async {
-            do {
-                try data.write(to: self.getDocumentsDirectory())
-                completion(nil)
-            } catch {
-                completion(error)
-            }
+    func write(data: Data, completion: (Error?) -> Void) {
+        do {
+            try data.write(to: self.getDocumentsDirectory())
+            completion(nil)
+        } catch {
+            completion(error)
         }
+        
     }
     
     /// Read data from disk
     /// - Parameter completion: completion block with optional data from storage
-    func read(completion: @escaping (Data?) -> Void) {
-        queue.async {
-            completion(FileManager.default.contents(atPath: self.getDocumentsDirectory().path))
-        }
+    func read(completion: (Data?) -> Void) {
+        completion(FileManager.default.contents(atPath: self.getDocumentsDirectory().path))
     }
     
     /// Remove log file from disk
     /// - Parameter completion: completion block with optional Error
-    func clean(completion: @escaping (Error?) -> Void) {
-        queue.async {
-            do {
-                try FileManager().removeItem(at: self.getDocumentsDirectory())
-                completion(nil)
-            } catch {
-                completion(error)
-            }
+    func clean(completion: (Error?) -> Void) {
+        do {
+            try FileManager().removeItem(at: self.getDocumentsDirectory())
+            completion(nil)
+        } catch {
+            completion(error)
         }
+        
     }
 }
