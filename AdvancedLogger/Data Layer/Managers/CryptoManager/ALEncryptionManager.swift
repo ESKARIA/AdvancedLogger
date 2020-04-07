@@ -91,7 +91,7 @@ extension ALCryptoManager: ALCryptoManagerProtocol {
     func decrypt(data: Data?, completion: (String?, ALCryptoManagerErrors?) -> Void) {
         self.crypt(data: data, option: CCOperation(kCCDecrypt), completion: { decryptData, error in
             if let _resultData = decryptData {
-                let resultData = String(bytes: _resultData, encoding: .utf8)
+                let resultData = String(decoding: _resultData, as: UTF8.self)
                 completion(resultData, error)
                 return
             }
