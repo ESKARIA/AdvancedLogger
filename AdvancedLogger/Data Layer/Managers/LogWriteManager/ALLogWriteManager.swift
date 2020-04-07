@@ -26,24 +26,14 @@ struct ALLogWriteManager {
         self.queue = DispatchQueue(label: queueLabel, qos: qos)
     }
     
-    /// Return saved file size. Need to replace old data and keep user storage clean
-    /// - Returns: file size
-    private func getSizeFile() -> Int {
-        var result = 0
-        self.diskManager.read { data in
-            if let data = data {
-                result = data.count
-            }
-        }
-        return result
-    }
-    
+    /// Запись файла на диск
+    /// - Parameter data: data для записи
     private func writeOnDisk(data: Data?) {
         guard let _data = data else {
             return
         }
         self.diskManager.write(data: _data) { (error) in
-            // fetch disk error
+            NSLog("AdvancedLoggerError! \(error.debugDescription)")
         }
     }
 }
@@ -51,31 +41,38 @@ struct ALLogWriteManager {
 // MARK: - ALLogWriteManagerProtocol
 
 extension ALLogWriteManager: ALLogWriteManagerProtocol {
+    
+    /// Add new log to file
+    /// - Parameter log: string with event's description
+    /// - Parameter isEncrypted: do you use crypto in log file
+    /// - Parameter maxSize: max size of log file
+    /// - Parameter logType: log type for format in file
     func addNew(log: String,
                 isEncrypted: Bool,
                 maxSize: Int,
                 logType: AdvancedLoggerEvent) {
         self.queue.sync {
             self.diskManager.read { (data) in
-                    self.populateManager.populate(log: log,
-                                                  existData: data,
-                                                  isUsedEncryption: isEncrypted,
-                                                  logType: logType,
-                                                  maxSizeData: maxSize) { (data, error) in
-                                                    if error == nil, data != nil {
-                                                        self.writeOnDisk(data: data)
-                                                    } else {
-                                                        // fetch populate error
-                                                    }
-                    }
+                self.populateManager.populate(log: log,
+                                              existData: data,
+                                              isUsedEncryption: isEncrypted,
+                                              logType: logType,
+                                              maxSizeData: maxSize) { (data, error) in
+                                                if error == nil, data != nil {
+                                                    self.writeOnDisk(data: data)
+                                                } else {
+                                                    NSLog("AdvancedLoggerError! \(error.debugDescription)")
+                                                }
                 }
+            }
         }
     }
     
+    /// Очистить файлов логов
     func cleanAll() {
         self.queue.sync {
             self.diskManager.clean { (error) in
-                   
+                NSLog("AdvancedLoggerError! \(error.debugDescription)")
             }
         }
     }

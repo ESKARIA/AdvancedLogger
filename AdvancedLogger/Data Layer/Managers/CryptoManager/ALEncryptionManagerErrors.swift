@@ -16,7 +16,7 @@ enum ALCryptoManagerErrors {
     case emptyData
     case failedCryptData(status: String)
     
-    var errorDescryption: String {
+    var errorDescription: String {
         switch self {
         case .wrongKey:
             return "Error: Failed to set a key."

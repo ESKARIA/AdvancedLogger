@@ -30,12 +30,20 @@ struct ALLogReadManager {
 // MARK: - ALLogReadManagerProtocol
 
 extension ALLogReadManager: ALLogReadManagerProtocol {
+    
+    /// Получить лог файл в String формате
+    /// - Parameters:
+    ///   - isEncrypted: используется ли шифрование
+    ///   - completion: completion блок
     func getStringLogs(isEncrypted: Bool, completion: @escaping (String?) -> Void) {
         self.queue.sync {
             self.diskManager.read { (data) in
                 if let data = data {
                     if isEncrypted {
                         self.cryptoManager.decrypt(data: data) { (log, error) in
+                            if let error = error {
+                                NSLog("AdvancedLoggerError! \(error.errorDescription)")
+                            }
                             completion(log)
                         }
                     } else {
