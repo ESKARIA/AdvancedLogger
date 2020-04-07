@@ -14,6 +14,5 @@ extension Constaints {
     enum Queue: String {
         case queueAdvancedLogger = "com.AdvancedLogger.main"
         case queueDiskOperationName = "com.AdvancedLogger.diskOperation"
-        case queueCryptoOperationName = "com.AdvancedLogger.cryptoOperation"
     }
 }

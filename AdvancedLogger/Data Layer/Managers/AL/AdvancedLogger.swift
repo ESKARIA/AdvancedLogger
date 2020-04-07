@@ -21,7 +21,7 @@ public struct AdvancedLogger {
     
     //public
     /// Point for interact with singleton logger
-    static public let shared: AdvancedLoggerProtocol = AdvancedLogger()
+    static public var shared: AdvancedLoggerProtocol = AdvancedLogger()
     /// Do you need encrypt data?
     public var encryptData = false
     /// log file size. Default is 4096

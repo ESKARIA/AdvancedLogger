@@ -42,7 +42,7 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
                     if isEncrypted {
                         self.cryptoManager.decrypt(data: data) { (log, error) in
                             if let error = error {
-                                NSLog("AdvancedLoggerError! \(error.errorDescription)")
+                                NSLog("AdvancedLogger error while get string log: \(error.errorDescription)")
                             }
                             completion(log)
                         }

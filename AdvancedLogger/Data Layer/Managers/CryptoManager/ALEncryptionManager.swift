@@ -16,9 +16,8 @@ struct ALCryptoManager {
     
     private var key: Data!
     private var iv: Data!
-    private var queue: DispatchQueue
     
-    init?(initKey: String, initIV: String, queueLabel: String, qos: DispatchQoS) {
+    init?(initKey: String, initIV: String) {
         
         var keyData: Data
         var ivData: Data
@@ -37,44 +36,39 @@ struct ALCryptoManager {
         
         self.key = keyData
         self.iv = ivData
-        
-        self.queue = DispatchQueue(label: queueLabel, qos: qos)
     }
     
     private func crypt(data: Data?, option: CCOperation, completion: (Data?, ALCryptoManagerErrors?) -> Void) {
         
-        self.queue.sync { [self] in
-            
-            guard let data = data else {
-                completion(nil, .emptyData)
-                return
-            }
-            let cryptLength = data.count + kCCBlockSizeAES128
-            var cryptData   = Data(count: cryptLength)
-            
-            let keyLength = self.key.count
-            let options   = CCOptions(kCCOptionPKCS7Padding)
-            
-            var bytesLength = Int(0)
-            
-            let status = cryptData.withUnsafeMutableBytes { cryptBytes in
-                data.withUnsafeBytes { dataBytes in
-                    self.iv.withUnsafeBytes { ivBytes in
-                        self.key.withUnsafeBytes { keyBytes in
-                            CCCrypt(option, CCAlgorithm(kCCAlgorithmAES), options, keyBytes.baseAddress, keyLength, ivBytes.baseAddress, dataBytes.baseAddress, data.count, cryptBytes.baseAddress, cryptLength, &bytesLength)
-                        }
+        guard let data = data else {
+            completion(nil, .emptyData)
+            return
+        }
+        let cryptLength = data.count + kCCBlockSizeAES128
+        var cryptData   = Data(count: cryptLength)
+        
+        let keyLength = self.key.count
+        let options   = CCOptions(kCCOptionPKCS7Padding)
+        
+        var bytesLength = Int(0)
+        
+        let status = cryptData.withUnsafeMutableBytes { cryptBytes in
+            data.withUnsafeBytes { dataBytes in
+                self.iv.withUnsafeBytes { ivBytes in
+                    self.key.withUnsafeBytes { keyBytes in
+                        CCCrypt(option, CCAlgorithm(kCCAlgorithmAES), options, keyBytes.baseAddress, keyLength, ivBytes.baseAddress, dataBytes.baseAddress, data.count, cryptBytes.baseAddress, cryptLength, &bytesLength)
                     }
                 }
             }
-            
-            guard UInt32(status) == UInt32(kCCSuccess) else {
-                completion(nil, .failedCryptData(status: status.description))
-                return
-            }
-            
-            cryptData.removeSubrange(bytesLength..<cryptData.count)
-            completion(cryptData, nil)
         }
+        
+        guard UInt32(status) == UInt32(kCCSuccess) else {
+            completion(nil, .failedCryptData(status: status.description))
+            return
+        }
+        
+        cryptData.removeSubrange(bytesLength..<cryptData.count)
+        completion(cryptData, nil)
     }
 }
 

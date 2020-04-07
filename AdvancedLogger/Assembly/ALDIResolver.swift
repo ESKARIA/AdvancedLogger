@@ -62,9 +62,7 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
             return _alCryptoManager
         }
         self.alCryptoManager = ALCryptoManager(initKey: Constaints.Crypto.cryptoKey.rawValue,
-                                               initIV: Constaints.Crypto.cryptoInitialVector.rawValue,
-                                               queueLabel: Constaints.Queue.queueCryptoOperationName.rawValue,
-                                               qos: .background)
+                                               initIV: Constaints.Crypto.cryptoInitialVector.rawValue)
         return self.alCryptoManager!
     }
     

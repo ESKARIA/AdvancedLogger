@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func testLogs() {
         AdvancedLogger.shared.cleanLogs()
+        AdvancedLogger.shared.encryptData = true
         AdvancedLogger.shared.addNew(log: "Test log 1", type: .warning)
         AdvancedLogger.shared.addNew(log: "Test log 2", type: .warning)
         AdvancedLogger.shared.addNew(log: "Test log 3", type: .warning)

@@ -33,7 +33,9 @@ struct ALLogWriteManager {
             return
         }
         self.diskManager.write(data: _data) { (error) in
-            NSLog("AdvancedLoggerError! \(error.debugDescription)")
+            if let error = error {
+                NSLog("AdvancedLogger error while while write: \(error.localizedDescription)")
+            }
         }
     }
 }
@@ -61,7 +63,7 @@ extension ALLogWriteManager: ALLogWriteManagerProtocol {
                                                 if error == nil, data != nil {
                                                     self.writeOnDisk(data: data)
                                                 } else {
-                                                    NSLog("AdvancedLoggerError! \(error.debugDescription)")
+                                                    NSLog("AdvancedLogger error while populate: \(error.debugDescription)")
                                                 }
                 }
             }
@@ -72,7 +74,7 @@ extension ALLogWriteManager: ALLogWriteManagerProtocol {
     func cleanAll() {
         self.queue.sync {
             self.diskManager.clean { (error) in
-                NSLog("AdvancedLoggerError! \(error.debugDescription)")
+                NSLog("AdvancedLogger error while clean: \(error.debugDescription)")
             }
         }
     }
