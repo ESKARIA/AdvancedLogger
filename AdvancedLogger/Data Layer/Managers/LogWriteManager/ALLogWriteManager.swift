@@ -53,13 +53,15 @@ struct ALLogWriteManager {
 extension ALLogWriteManager: ALLogWriteManagerProtocol {
     func addNew(log: String,
                 isEncrypted: Bool,
+                maxSize: Int,
                 logType: AdvancedLoggerEvent) {
         self.queue.sync {
             self.diskManager.read { (data) in
                     self.populateManager.populate(log: log,
                                                   existData: data,
                                                   isUsedEncryption: isEncrypted,
-                                                  logType: logType) { (data, error) in
+                                                  logType: logType,
+                                                  maxSizeData: maxSize) { (data, error) in
                                                     if error == nil, data != nil {
                                                         self.writeOnDisk(data: data)
                                                     } else {

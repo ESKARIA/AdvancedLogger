@@ -47,6 +47,7 @@ extension AdvancedLogger: AdvancedLoggerProtocol {
         self.queue.async {
             self.writeManager.addNew(log: log,
                                      isEncrypted: self.encryptData,
+                                     maxSize: self.logFileSize,
                                      logType: type)
         }
     }

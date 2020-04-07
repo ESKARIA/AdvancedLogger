@@ -8,7 +8,11 @@
 
 import Foundation
 
+/// Log type for write.
 public enum AdvancedLoggerEvent {
     case warning
     case error
+    case crash
+    case success
+    case execution
 }

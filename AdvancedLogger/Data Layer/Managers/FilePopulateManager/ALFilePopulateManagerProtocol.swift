@@ -18,10 +18,12 @@ protocol ALFilePopulateManagerProtocol {
     /// - Parameter existData: exist data in log file
     /// - Parameter isUsedEncryption: do you use encryption for logs
     /// - Parameter logType: log type for format in file
+    /// /// - Parameter maxSizeData: max log file size
     /// - Parameter completion: completion with result optional data and optional error
     func populate(log: String,
                   existData: Data?,
                   isUsedEncryption: Bool,
                   logType: AdvancedLoggerEvent,
+                  maxSizeData: Int,
                   completion: @escaping (Data?, ALFilePopulateManagerErrors?) -> Void)
 }

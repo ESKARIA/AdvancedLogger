@@ -13,12 +13,12 @@ protocol ALLogWriteManagerProtocol {
     
     /// Add new log to file
     /// - Parameter log: string with event's description
-    /// - Parameter existData: exist data in log file
-    /// - Parameter isUsedEncryption: do you use encryption for logs
+    /// - Parameter isEncrypted: do you use crypto in log file
+    /// - Parameter maxSize: max size of log file
     /// - Parameter logType: log type for format in file
-    /// - Parameter completion: completion with result optional data and optional error
     func addNew(log: String,
                 isEncrypted: Bool,
+                maxSize: Int,
                 logType: AdvancedLoggerEvent)
     /// Clean all logs
     func cleanAll()

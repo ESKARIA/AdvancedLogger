@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func testLogs() {
         AdvancedLogger.shared.cleanLogs()
-        AdvancedLogger.shared.addNew(log: "Test log 1 \n", type: .warning)
-        AdvancedLogger.shared.addNew(log: "Test log 2 \n", type: .warning)
-        AdvancedLogger.shared.addNew(log: "Test log 3 \n", type: .warning)
+        AdvancedLogger.shared.addNew(log: "Test log 1", type: .warning)
+        AdvancedLogger.shared.addNew(log: "Test log 2", type: .warning)
+        AdvancedLogger.shared.addNew(log: "Test log 3", type: .warning)
         AdvancedLogger.shared.getStringLogs { (logs) in
             print("\n logs is")
             print(logs!)
