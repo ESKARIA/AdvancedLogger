@@ -16,4 +16,9 @@ protocol ALLogReadManagerProtocol {
     ///   - isEncrypted: используется ли шифрование
     ///   - completion: completion блок 
     func getStringLogs(isEncrypted: Bool, completion: @escaping (String?) -> Void)
+    /// Получить лог файл в Data формате
+    /// - Parameters:
+    ///   - isEncrypted: используется ли шифрование
+    ///   - completion: completion блок
+    func getDataLogs(isEncrypted: Bool, completion: @escaping (Data?) -> Void)
 }

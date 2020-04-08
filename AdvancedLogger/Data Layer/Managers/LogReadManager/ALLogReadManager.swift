@@ -30,7 +30,7 @@ struct ALLogReadManager {
 // MARK: - ALLogReadManagerProtocol
 
 extension ALLogReadManager: ALLogReadManagerProtocol {
-    
+
     /// Получить лог файл в String формате
     /// - Parameters:
     ///   - isEncrypted: используется ли шифрование
@@ -44,7 +44,8 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
                             if let error = error {
                                 NSLog("AdvancedLogger error while get string log: \(error.errorDescription)")
                             }
-                            completion(log)
+                            let resultData = String(decoding: log ?? Data(), as: UTF8.self)
+                            completion(resultData)
                         }
                     } else {
                         let log = String(data: data, encoding: .utf8)
@@ -54,4 +55,27 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
             }
         }
     }
+    
+    /// Получить лог файл в Data формате
+       /// - Parameters:
+       ///   - isEncrypted: используется ли шифрование
+       ///   - completion: completion блок
+       func getDataLogs(isEncrypted: Bool, completion: @escaping (Data?) -> Void) {
+           self.queue.sync {
+               self.diskManager.read { (data) in
+                   if let data = data {
+                       if isEncrypted {
+                           self.cryptoManager.decrypt(data: data) { (log, error) in
+                               if let error = error {
+                                   NSLog("AdvancedLogger error while get string log: \(error.errorDescription)")
+                               }
+                               completion(log)
+                           }
+                       } else {
+                           completion(data)
+                       }
+                   }
+               }
+           }
+       }
 }

@@ -18,5 +18,5 @@ protocol ALCryptoManagerProtocol {
     /// decrypt data with default key
     /// - Parameter data: optional string
     /// - Parameter completion: completion with decrypted optional string and optional error
-    func decrypt(data: Data?, completion: (String?, ALCryptoManagerErrors?) -> Void)
+    func decrypt(data: Data?, completion: (Data?, ALCryptoManagerErrors?) -> Void)
 }

@@ -75,7 +75,8 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
                 switch isUsedEncryption {
                 case true:
                     self.cryptoManager.decrypt(data: data) { (decryptData, error) in
-                        string = decryptData ?? ""
+                        let resultData = String(decoding: decryptData ?? Data(), as: UTF8.self)
+                        string = resultData
                     }
                 case false:
                     string = String(data: _data, encoding: .utf8) ?? ""

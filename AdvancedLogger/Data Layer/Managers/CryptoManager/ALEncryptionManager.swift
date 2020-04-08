@@ -88,14 +88,9 @@ extension ALCryptoManager: ALCryptoManagerProtocol {
     /// decrypt data with default key
     /// - Parameter data: data to decrypt
     /// - Parameter completion: completion with decrypted optional string and optional error
-    func decrypt(data: Data?, completion: (String?, ALCryptoManagerErrors?) -> Void) {
+    func decrypt(data: Data?, completion: (Data?, ALCryptoManagerErrors?) -> Void) {
         self.crypt(data: data, option: CCOperation(kCCDecrypt), completion: { decryptData, error in
-            if let _resultData = decryptData {
-                let resultData = String(decoding: _resultData, as: UTF8.self)
-                completion(resultData, error)
-                return
-            }
-            completion(nil, error)
+            completion(decryptData, error)
         })
         
     }
