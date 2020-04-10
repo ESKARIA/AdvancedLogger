@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40A242024406E920057B5D2 /* ALCryptoInitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A241F24406E920057B5D2 /* ALCryptoInitModel.swift */; };
 		D4251BAE243B04FF002A41D4 /* ALEncryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BAD243B04FF002A41D4 /* ALEncryptionManager.swift */; };
 		D4251BB0243B050B002A41D4 /* ALEncryptionManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BAF243B050B002A41D4 /* ALEncryptionManagerProtocol.swift */; };
 		D4251BB2243B0B38002A41D4 /* ALEncryptionManagerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB1243B0B38002A41D4 /* ALEncryptionManagerErrors.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D40A241F24406E920057B5D2 /* ALCryptoInitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCryptoInitModel.swift; sourceTree = "<group>"; };
 		D4251BAD243B04FF002A41D4 /* ALEncryptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManager.swift; sourceTree = "<group>"; };
 		D4251BAF243B050B002A41D4 /* ALEncryptionManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManagerProtocol.swift; sourceTree = "<group>"; };
 		D4251BB1243B0B38002A41D4 /* ALEncryptionManagerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManagerErrors.swift; sourceTree = "<group>"; };
@@ -131,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D40A241E24406E830057B5D2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D40A241F24406E920057B5D2 /* ALCryptoInitModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D4251BAC243B04C4002A41D4 /* CryptoManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +244,7 @@
 		D47AF165243A63B00090DFAA /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
+				D40A241E24406E830057B5D2 /* Models */,
 				D47AF166243A63B90090DFAA /* Managers */,
 			);
 			path = "Data Layer";
@@ -446,6 +457,7 @@
 				D4251BB2243B0B38002A41D4 /* ALEncryptionManagerErrors.swift in Sources */,
 				D4251BBA243B1ABE002A41D4 /* ALLogReadManager.swift in Sources */,
 				D47AF170243A6A890090DFAA /* ALFilePopulateManager.swift in Sources */,
+				D40A242024406E920057B5D2 /* ALCryptoInitModel.swift in Sources */,
 				D47AF177243A6C150090DFAA /* ALDIResolver.swift in Sources */,
 				D4251BB0243B050B002A41D4 /* ALEncryptionManagerProtocol.swift in Sources */,
 				D4251BBF243B1C19002A41D4 /* ALLogWriteManager.swift in Sources */,

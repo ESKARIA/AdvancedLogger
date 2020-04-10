@@ -25,12 +25,14 @@ struct ALCryptoManager {
         if initKey.count == kCCKeySizeAES128 || initKey.count == kCCKeySizeAES256, let _keyData = initKey.data(using: .utf8) {
             keyData = _keyData
         } else {
+            NSLog("AdvancedLogger error: witn crypto init: invalid crypto key. Install default key.")
             keyData = Constaints.Crypto.cryptoKey.rawValue.data(using: .utf8)!
         }
         
         if initIV.count == kCCBlockSizeAES128, let _ivData = initIV.data(using: .utf8) {
             ivData = _ivData
         } else {
+            NSLog("AdvancedLogger error: witn crypto init: invalid initial vector key. Install default key.")
             ivData = Constaints.Crypto.cryptoKey.rawValue.data(using: .utf8)!
         }
         

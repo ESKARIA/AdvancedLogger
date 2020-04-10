@@ -14,8 +14,8 @@ import Foundation
 public struct AdvancedLogger {
     
     init() {
-        self.writeManager = diresolver.getALLogWriteManager()
-        self.readManager = diresolver.getALLogReadManager()
+        self.writeManager = diresolver.getALLogWriteManager(cryptoKeys: self.aesCryptoKeys)
+        self.readManager = diresolver.getALLogReadManager(cryptoKeys: self.aesCryptoKeys)
         self.queue = DispatchQueue(label: Constaints.Queue.queueAdvancedLogger.rawValue, qos: .utility)
     }
     
@@ -26,6 +26,9 @@ public struct AdvancedLogger {
     public var encryptData = false
     /// log file size. Default is 4096
     public var logFileSize = 4096
+    /// AES 128 Crypto key for encrypt\decrypt your logs
+    public var aesCryptoKeys = ALAESCryptoInitModel(cryptoKey: Constaints.Crypto.cryptoKey.rawValue,
+                                                    initialVector: Constaints.Crypto.cryptoInitialVector.rawValue)
     
     //private
     private var diresolver: ALDIResolverComponentsProtocol = ALDIResolver()
