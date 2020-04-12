@@ -51,11 +51,28 @@ class ALCryptoTest: XCTestCase {
         }
     }
     
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testInvalidUpdateKeys() {
+        let keys = ALAESCryptoInitModel(cryptoKey: "Invalid key", initialVector: "Invalid IV")
+        do {
+            try self.cryptoManager.update(cryptoKeys: keys)
+        } catch {
+            if let _error = error as? ALCryptoManagerError {
+                if _error == .wrongKey || _error == .wrongInitalVector {
+                    XCTAssertTrue(true)
+                    return
+                }
+            }
         }
+        XCTAssertFalse(true)
     }
     
+    func testSuccessUpdateKeys() {
+        let keys = ALAESCryptoInitModel(cryptoKey: Crypto.cryptoKey.rawValue, initialVector: Crypto.cryptoInitialVector.rawValue)
+        do {
+            try self.cryptoManager.update(cryptoKeys: keys)
+        } catch {
+            XCTAssertFalse(true)
+        }
+        XCTAssertTrue(true)
+    }
 }
