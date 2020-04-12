@@ -27,7 +27,6 @@
 		D47AC567243C5B390044B94C /* AdvancedLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */; };
 		D47AC568243C5B390044B94C /* AdvancedLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D47AF155243A63AA0090DFAA /* AdvancedLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */; };
-		D47AF15A243A63AA0090DFAA /* AdvancedLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF159243A63AA0090DFAA /* AdvancedLoggerTests.swift */; };
 		D47AF15C243A63AA0090DFAA /* AdvancedLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = D47AF14E243A63AA0090DFAA /* AdvancedLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D47AF16B243A63E30090DFAA /* ALFileDiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF16A243A63E30090DFAA /* ALFileDiskManager.swift */; };
 		D47AF16D243A66E90090DFAA /* Constaints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF16C243A66E90090DFAA /* Constaints.swift */; };
@@ -37,6 +36,7 @@
 		D47AF177243A6C150090DFAA /* ALDIResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF176243A6C150090DFAA /* ALDIResolver.swift */; };
 		D47AF17B243A73B80090DFAA /* AdvancedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */; };
 		D47AF17F243A743A0090DFAA /* AdvancedLoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */; };
+		D495241D24430FE00001D00E /* ALCryptoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495241C24430FE00001D00E /* ALCryptoTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +94,6 @@
 		D47AF14E243A63AA0090DFAA /* AdvancedLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedLogger.h; sourceTree = "<group>"; };
 		D47AF14F243A63AA0090DFAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D47AF154243A63AA0090DFAA /* AdvancedLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdvancedLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D47AF159243A63AA0090DFAA /* AdvancedLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerTests.swift; sourceTree = "<group>"; };
 		D47AF15B243A63AA0090DFAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D47AF16A243A63E30090DFAA /* ALFileDiskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFileDiskManager.swift; sourceTree = "<group>"; };
 		D47AF16C243A66E90090DFAA /* Constaints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constaints.swift; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		D47AF176243A6C150090DFAA /* ALDIResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALDIResolver.swift; sourceTree = "<group>"; };
 		D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLogger.swift; sourceTree = "<group>"; };
 		D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerProtocol.swift; sourceTree = "<group>"; };
+		D495241C24430FE00001D00E /* ALCryptoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCryptoTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,7 +235,7 @@
 		D47AF158243A63AA0090DFAA /* AdvancedLoggerTests */ = {
 			isa = PBXGroup;
 			children = (
-				D47AF159243A63AA0090DFAA /* AdvancedLoggerTests.swift */,
+				D495241C24430FE00001D00E /* ALCryptoTest.swift */,
 				D47AF15B243A63AA0090DFAA /* Info.plist */,
 			);
 			path = AdvancedLoggerTests;
@@ -479,7 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D47AF15A243A63AA0090DFAA /* AdvancedLoggerTests.swift in Sources */,
+				D495241D24430FE00001D00E /* ALCryptoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
