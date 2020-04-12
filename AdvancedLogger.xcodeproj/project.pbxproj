@@ -37,6 +37,7 @@
 		D47AF17B243A73B80090DFAA /* AdvancedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */; };
 		D47AF17F243A743A0090DFAA /* AdvancedLoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */; };
 		D495241D24430FE00001D00E /* ALCryptoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495241C24430FE00001D00E /* ALCryptoTest.swift */; };
+		D4A651992443A7DB0028E30D /* ALFileManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A651982443A7DB0028E30D /* ALFileManagerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLogger.swift; sourceTree = "<group>"; };
 		D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerProtocol.swift; sourceTree = "<group>"; };
 		D495241C24430FE00001D00E /* ALCryptoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCryptoTest.swift; sourceTree = "<group>"; };
+		D4A651982443A7DB0028E30D /* ALFileManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFileManagerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				D495241C24430FE00001D00E /* ALCryptoTest.swift */,
+				D4A651982443A7DB0028E30D /* ALFileManagerTest.swift */,
 				D47AF15B243A63AA0090DFAA /* Info.plist */,
 			);
 			path = AdvancedLoggerTests;
@@ -479,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A651992443A7DB0028E30D /* ALFileManagerTest.swift in Sources */,
 				D495241D24430FE00001D00E /* ALCryptoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
