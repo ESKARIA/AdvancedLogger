@@ -11,18 +11,12 @@ import XCTest
 
 class ALCryptoTest: XCTestCase {
     
-    /// Default crypto keys for encrypt logs
-    enum Crypto: String {
-        case cryptoKey = "12345678901234567890123456789012"
-        case cryptoInitialVector = "abcdefghijklmnop"
-    }
-    
     var cryptoManager: ALCryptoManagerProtocol!
     var testStringToCrypt: String!
     
     override func setUp() {
         super.setUp()
-        self.cryptoManager = ALCryptoManager(initKey: Crypto.cryptoKey.rawValue, initIV: Crypto.cryptoInitialVector.rawValue)
+        self.cryptoManager = ALCryptoManager(initKey: Constaints.Crypto.cryptoKey.rawValue, initIV: Constaints.Crypto.cryptoInitialVector.rawValue)
         self.testStringToCrypt = "AdvancedLogger Crypto Test"
     }
     
@@ -35,44 +29,30 @@ class ALCryptoTest: XCTestCase {
     func testCrypt() {
         var data: Data?
         self.cryptoManager.encrypt(string: self.testStringToCrypt) { (_data, error) in
-            if let error = error {
-                XCTAssertFalse(true, error.errorDescription)
-                return
-            }
+            XCTAssertNil(error, error?.errorDescription ?? "")
             data = _data
         }
         self.cryptoManager.decrypt(data: data) { (_data, error) in
-            if let error = error {
-                XCTAssertFalse(true, error.errorDescription)
-                return
-            }
+            XCTAssertNil(error, error?.errorDescription ?? "")
             let resultString = String(decoding: _data ?? Data(), as: UTF8.self)
-            XCTAssertTrue(resultString == self.testStringToCrypt)
+            XCTAssertEqual(resultString, self.testStringToCrypt)
         }
     }
     
     func testInvalidUpdateKeys() {
         let keys = ALAESCryptoInitModel(cryptoKey: "Invalid key", initialVector: "Invalid IV")
-        do {
-            try self.cryptoManager.update(cryptoKeys: keys)
-        } catch {
+        XCTAssertThrowsError(try self.cryptoManager.update(cryptoKeys: keys), "Invalid keys") { (error) in
             if let _error = error as? ALCryptoManagerError {
-                if _error == .wrongKey || _error == .wrongInitalVector {
-                    XCTAssertTrue(true)
-                    return
-                }
+                XCTAssertTrue(_error == .wrongKey || _error == .wrongInitalVector)
+                return
+            } else {
+                XCTAssert(false)
             }
         }
-        XCTAssertFalse(true)
     }
     
     func testSuccessUpdateKeys() {
-        let keys = ALAESCryptoInitModel(cryptoKey: Crypto.cryptoKey.rawValue, initialVector: Crypto.cryptoInitialVector.rawValue)
-        do {
-            try self.cryptoManager.update(cryptoKeys: keys)
-        } catch {
-            XCTAssertFalse(true)
-        }
-        XCTAssertTrue(true)
+        let keys = ALAESCryptoInitModel(cryptoKey: Constaints.Crypto.cryptoKey.rawValue, initialVector: Constaints.Crypto.cryptoInitialVector.rawValue)
+        XCTAssertNoThrow(try self.cryptoManager.update(cryptoKeys: keys))
     }
 }
