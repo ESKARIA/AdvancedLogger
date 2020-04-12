@@ -10,5 +10,5 @@ import Foundation
 
 /// Description error while populate model for file
 enum ALFilePopulateManagerErrors {
-    case encryptError(error: ALCryptoManagerErrors)
+    case encryptError(error: ALCryptoManagerError)
 }

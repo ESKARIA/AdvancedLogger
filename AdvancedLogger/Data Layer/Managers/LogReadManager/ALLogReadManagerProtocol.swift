@@ -21,4 +21,7 @@ protocol ALLogReadManagerProtocol {
     ///   - isEncrypted: используется ли шифрование
     ///   - completion: completion блок
     func getDataLogs(isEncrypted: Bool, completion: @escaping (Data?) -> Void)
+    /// update crypto keys for cryptomanager
+    /// - Parameter keys: new keys
+    mutating func update(cryptoKeys keys: ALAESCryptoInitModel) throws
 }
