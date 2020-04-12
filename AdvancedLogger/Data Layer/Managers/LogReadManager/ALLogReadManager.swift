@@ -78,4 +78,10 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
                }
            }
        }
+    
+    /// update crypto keys for cryptomanager
+    /// - Parameter keys: new keys
+    mutating func update(cryptoKeys keys: ALAESCryptoInitModel) throws {
+        try self.cryptoManager.update(cryptoKeys: keys)
+    }
 }

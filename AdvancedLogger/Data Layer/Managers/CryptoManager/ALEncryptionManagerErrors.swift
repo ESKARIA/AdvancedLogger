@@ -9,7 +9,7 @@
 import Foundation
 
 /// Enum with errors for catch this when encryption is execute
-enum ALCryptoManagerErrors {
+enum ALCryptoManagerError: Error {
     
     case wrongKey
     case wrongInitalVector
