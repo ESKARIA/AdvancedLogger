@@ -14,4 +14,9 @@ public struct ALAESCryptoInitModel {
     public var cryptoKey: String
     /// crupto initial vector for aes encrypt\decrypt
     public var initialVector: String
+    
+    public init(cryptoKey: String, initialVector: String) {
+        self.cryptoKey = cryptoKey
+        self.initialVector = initialVector
+    }
 }

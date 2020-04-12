@@ -22,4 +22,7 @@ protocol ALLogWriteManagerProtocol {
                 logType: AdvancedLoggerEvent)
     /// Clean all logs
     func cleanAll()
+    /// update crypto keys for cryptomanager
+    /// - Parameter keys: new keys
+    mutating func update(cryptoKeys keys: ALAESCryptoInitModel) throws
 }
