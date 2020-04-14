@@ -36,8 +36,8 @@
 		D47AF177243A6C150090DFAA /* ALDIResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF176243A6C150090DFAA /* ALDIResolver.swift */; };
 		D47AF17B243A73B80090DFAA /* AdvancedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */; };
 		D47AF17F243A743A0090DFAA /* AdvancedLoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */; };
-		D495241D24430FE00001D00E /* ALCryptoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495241C24430FE00001D00E /* ALCryptoTest.swift */; };
-		D4A651992443A7DB0028E30D /* ALFileManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A651982443A7DB0028E30D /* ALFileManagerTest.swift */; };
+		D49342282446563800122C84 /* ALCryptoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49342262446563800122C84 /* ALCryptoTest.swift */; };
+		D49342292446563800122C84 /* ALFileManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49342272446563800122C84 /* ALFileManagerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,8 +104,8 @@
 		D47AF176243A6C150090DFAA /* ALDIResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALDIResolver.swift; sourceTree = "<group>"; };
 		D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLogger.swift; sourceTree = "<group>"; };
 		D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerProtocol.swift; sourceTree = "<group>"; };
-		D495241C24430FE00001D00E /* ALCryptoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCryptoTest.swift; sourceTree = "<group>"; };
-		D4A651982443A7DB0028E30D /* ALFileManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFileManagerTest.swift; sourceTree = "<group>"; };
+		D49342262446563800122C84 /* ALCryptoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALCryptoTest.swift; sourceTree = "<group>"; };
+		D49342272446563800122C84 /* ALFileManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALFileManagerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,8 +237,7 @@
 		D47AF158243A63AA0090DFAA /* AdvancedLoggerTests */ = {
 			isa = PBXGroup;
 			children = (
-				D495241C24430FE00001D00E /* ALCryptoTest.swift */,
-				D4A651982443A7DB0028E30D /* ALFileManagerTest.swift */,
+				D49342252446563800122C84 /* Tests */,
 				D47AF15B243A63AA0090DFAA /* Info.plist */,
 			);
 			path = AdvancedLoggerTests;
@@ -301,6 +300,15 @@
 				D4251BC4243B24DF002A41D4 /* AdvancedLoggerEvent.swift */,
 			);
 			path = AL;
+			sourceTree = "<group>";
+		};
+		D49342252446563800122C84 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D49342262446563800122C84 /* ALCryptoTest.swift */,
+				D49342272446563800122C84 /* ALFileManagerTest.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,8 +490,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4A651992443A7DB0028E30D /* ALFileManagerTest.swift in Sources */,
-				D495241D24430FE00001D00E /* ALCryptoTest.swift in Sources */,
+				D49342292446563800122C84 /* ALFileManagerTest.swift in Sources */,
+				D49342282446563800122C84 /* ALCryptoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
