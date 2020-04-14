@@ -38,6 +38,7 @@
 		D47AF17F243A743A0090DFAA /* AdvancedLoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */; };
 		D49342282446563800122C84 /* ALCryptoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49342262446563800122C84 /* ALCryptoTest.swift */; };
 		D49342292446563800122C84 /* ALFileManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49342272446563800122C84 /* ALFileManagerTest.swift */; };
+		D493422B2446580100122C84 /* AdvancedLoggerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493422A2446580100122C84 /* AdvancedLoggerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerProtocol.swift; sourceTree = "<group>"; };
 		D49342262446563800122C84 /* ALCryptoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALCryptoTest.swift; sourceTree = "<group>"; };
 		D49342272446563800122C84 /* ALFileManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALFileManagerTest.swift; sourceTree = "<group>"; };
+		D493422A2446580100122C84 /* AdvancedLoggerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +309,7 @@
 			children = (
 				D49342262446563800122C84 /* ALCryptoTest.swift */,
 				D49342272446563800122C84 /* ALFileManagerTest.swift */,
+				D493422A2446580100122C84 /* AdvancedLoggerTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D49342292446563800122C84 /* ALFileManagerTest.swift in Sources */,
+				D493422B2446580100122C84 /* AdvancedLoggerTest.swift in Sources */,
 				D49342282446563800122C84 /* ALCryptoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
