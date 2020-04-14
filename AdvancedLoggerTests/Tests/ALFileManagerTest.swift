@@ -33,4 +33,13 @@ class ALFileManagerTest: XCTestCase {
         }
     }
 
+    func testClean() {
+        self.diskManager.clean { (error) in
+            XCTAssertNil(error, error?.localizedDescription ?? "")
+        }
+        
+        self.diskManager.read { (data) in
+            XCTAssertNil(data)
+        }
+    }
 }
