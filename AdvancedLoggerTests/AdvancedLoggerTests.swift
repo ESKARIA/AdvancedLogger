@@ -32,3 +32,13 @@ class AdvancedLoggerTests: XCTestCase {
     }
 
 }
+
+//#if os(Linux)
+//extension AdvancedLoggerTests {
+//    static var allTests : [(String, (AdvancedLoggerTests) -> () throws -> Void)] {
+//        return [
+//            ("testExample", testExample),
+//        ]
+//    }
+//}
+//#endif

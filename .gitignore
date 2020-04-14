@@ -126,3 +126,7 @@ Carthage/Build
 *.generated.swift
 
 # End of https://www.gitignore.io/api/swift,xcode,Cobjective-c,osx
+
+.swiftpm/xcode/xcshareddata/xcschemes/AdvancedLogger.xcscheme
+
+.swiftpm/xcode/xcshareddata/xcschemes/AdvancedLoggerTests.xcscheme

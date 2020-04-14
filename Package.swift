@@ -23,6 +23,9 @@ let package = Package(
             name: "AdvancedLogger",
             dependencies: [],
             path: "AdvancedLogger"),
-        
+        .testTarget(
+            name: "AdvancedLoggerTests",
+            dependencies: ["AdvancedLogger"],
+            path: "AdvancedLoggerTests"),
     ]
 )
