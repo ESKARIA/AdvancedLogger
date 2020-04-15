@@ -78,6 +78,16 @@ extension AdvancedLogger: AdvancedLoggerProtocol {
         }
     }
     
+    /// Get logs in data format
+    /// - Parameter completion: completion with data logs
+    public func getDataLogs(completion: @escaping (Data?) -> Void) {
+        self.queue.async {
+            self.readManager.getDataLogs(isEncrypted: self.encryptData) { (logs) in
+                completion(logs)
+            }
+        }
+    }
+    
     /// Clean all logs
     public func cleanLogs() {
         self.queue.async {

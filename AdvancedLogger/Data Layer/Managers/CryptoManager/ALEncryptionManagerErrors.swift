@@ -29,3 +29,7 @@ enum ALCryptoManagerError: Error {
         }
     }
 }
+
+extension ALCryptoManagerError: Equatable {
+    
+}

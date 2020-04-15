@@ -1,7 +1,11 @@
 import XCTest
 
-import AdvancedLoggerTests
+import ALCryptoTest
+import ALFileManagerTest
+import AdvancedLoggerTest
 
 var tests = [XCTestCase]()
-tests += AdvancedLoggerTests.allTests()
+tests += ALCryptoTest.allTests()
+tests += ALFileManagerTest.allTests()
+tests += AdvancedLoggerTest.allTests()
 XCTMain(tests)

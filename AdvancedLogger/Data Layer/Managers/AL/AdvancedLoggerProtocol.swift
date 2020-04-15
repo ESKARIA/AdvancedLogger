@@ -25,6 +25,9 @@ public protocol AdvancedLoggerProtocol {
     /// Get logs in string format
     /// - Parameter completion: completion with string logs
     func getStringLogs(completion: @escaping (String?) -> Void)
+    /// Get logs in data format
+    /// - Parameter completion: completion with data logs
+    func getDataLogs(completion: @escaping (Data?) -> Void)
     /// Clean all logs
     func cleanLogs()
 }
