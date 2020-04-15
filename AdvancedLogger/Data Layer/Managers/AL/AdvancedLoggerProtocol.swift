@@ -14,7 +14,9 @@ public protocol AdvancedLoggerProtocol {
     /// Do you need encrypt data?
     var encryptData: Bool { get set }
     /// set log's file size in byte. Default is 4096
-    var logFileSize: Int { get set}
+    var logFileSize: Int { get set }
+    /// Crypto keys for encrypt\decrypt
+    var aesCryptoKeys: ALAESCryptoInitModel { get set }
     /// Add new log to log file
     /// - Parameters:
     ///   - log: description log
@@ -23,6 +25,9 @@ public protocol AdvancedLoggerProtocol {
     /// Get logs in string format
     /// - Parameter completion: completion with string logs
     func getStringLogs(completion: @escaping (String?) -> Void)
+    /// Get logs in data format
+    /// - Parameter completion: completion with data logs
+    func getDataLogs(completion: @escaping (Data?) -> Void)
     /// Clean all logs
     func cleanLogs()
 }

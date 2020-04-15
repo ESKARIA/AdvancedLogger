@@ -14,8 +14,8 @@ import Foundation
 public struct AdvancedLogger {
     
     init() {
-        self.writeManager = diresolver.getALLogWriteManager(cryptoKeys: self.aesCryptoKeys)
-        self.readManager = diresolver.getALLogReadManager(cryptoKeys: self.aesCryptoKeys)
+        self.writeManager = diresolver.getALLogWriteManager()
+        self.readManager = diresolver.getALLogReadManager()
         self.queue = DispatchQueue(label: Constaints.Queue.queueAdvancedLogger.rawValue, qos: .utility)
     }
     
@@ -28,7 +28,11 @@ public struct AdvancedLogger {
     public var logFileSize = 4096
     /// AES 128 Crypto key for encrypt\decrypt your logs
     public var aesCryptoKeys = ALAESCryptoInitModel(cryptoKey: Constaints.Crypto.cryptoKey.rawValue,
-                                                    initialVector: Constaints.Crypto.cryptoInitialVector.rawValue)
+                                                    initialVector: Constaints.Crypto.cryptoInitialVector.rawValue) {
+        didSet {
+            self.updateCryptoKeys()
+        }
+    }
     
     //private
     private var diresolver: ALDIResolverComponentsProtocol = ALDIResolver()
@@ -36,6 +40,15 @@ public struct AdvancedLogger {
     private var readManager: ALLogReadManagerProtocol
     private var queue: DispatchQueue!
     
+    private mutating func updateCryptoKeys() {
+        do {
+            try self.writeManager.update(cryptoKeys: self.aesCryptoKeys)
+            try self.readManager.update(cryptoKeys: self.aesCryptoKeys)
+        } catch {
+            let _error = error as? ALCryptoManagerError
+            NSLog("Advanced Logger update crypto keys error: \(String(describing: _error?.errorDescription))")
+        }
+    }
 }
 
 // MARK: - AdvancedLoggerProtocol
@@ -60,6 +73,16 @@ extension AdvancedLogger: AdvancedLoggerProtocol {
     public func getStringLogs(completion: @escaping (String?) -> Void) {
         self.queue.async {
             self.readManager.getStringLogs(isEncrypted: self.encryptData) { (logs) in
+                completion(logs)
+            }
+        }
+    }
+    
+    /// Get logs in data format
+    /// - Parameter completion: completion with data logs
+    public func getDataLogs(completion: @escaping (Data?) -> Void) {
+        self.queue.async {
+            self.readManager.getDataLogs(isEncrypted: self.encryptData) { (logs) in
                 completion(logs)
             }
         }

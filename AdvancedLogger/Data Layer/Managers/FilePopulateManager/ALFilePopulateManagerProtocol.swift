@@ -26,4 +26,7 @@ protocol ALFilePopulateManagerProtocol {
                   logType: AdvancedLoggerEvent,
                   maxSizeData: Int,
                   completion: @escaping (Data?, ALFilePopulateManagerErrors?) -> Void)
+    /// update crypto keys for cryptomanager
+    /// - Parameter keys: new keys
+    mutating func update(cryptoKeys keys: ALAESCryptoInitModel) throws
 }

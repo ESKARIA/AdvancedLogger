@@ -117,5 +117,11 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
         }
         completion(data, nil)
     }
+    
+    /// update crypto keys for cryptomanager
+    /// - Parameter keys: new keys
+    mutating func update(cryptoKeys keys: ALAESCryptoInitModel) throws {
+        try self.cryptoManager.update(cryptoKeys: keys)
+    }
 }
 

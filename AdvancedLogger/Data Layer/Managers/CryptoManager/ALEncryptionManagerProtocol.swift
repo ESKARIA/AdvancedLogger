@@ -14,9 +14,12 @@ protocol ALCryptoManagerProtocol {
     /// Encrypt string with default key
     /// - Parameter string: encrypted data
     /// - Parameter completion: completion with optional data and optional error
-    func encrypt(string: String, completion: (Data?, ALCryptoManagerErrors?) -> Void)
+    func encrypt(string: String, completion: (Data?, ALCryptoManagerError?) -> Void)
     /// decrypt data with default key
     /// - Parameter data: optional string
     /// - Parameter completion: completion with decrypted optional string and optional error
-    func decrypt(data: Data?, completion: (Data?, ALCryptoManagerErrors?) -> Void)
+    func decrypt(data: Data?, completion: (Data?, ALCryptoManagerError?) -> Void)
+    /// update crypto keys for cryptomanager
+    /// - Parameter keys: new keys
+    mutating func update(cryptoKeys keys: ALAESCryptoInitModel) throws
 }
