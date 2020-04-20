@@ -24,32 +24,41 @@ class AdvancedLoggerTest: XCTestCase {
     }
     
     func testWrite() {
+        let expectation = XCTestExpectation(description: "AdvancedLogget class: testWrite")
+        
         AdvancedLogger.shared.encryptData = false
         AdvancedLogger.shared.addNew(log: self.testLog, type: .execution)
         
         AdvancedLogger.shared.getStringLogs { (log) in
             XCTAssertNotNil(log, "Error with write log. Logger return nil after write!")
             XCTAssertEqual(self.testLog, log!)
+            expectation.fulfill()
         }
         AdvancedLogger.shared.cleanLogs()
+        wait(for: [expectation], timeout: 3.0)
     }
     
     func testCryptoWrite() {
+        let expectation = XCTestExpectation(description: "AdvancedLogget class: testCryptoWrite")
+        
         AdvancedLogger.shared.encryptData = true
         AdvancedLogger.shared.addNew(log: self.testLog, type: .execution)
         
         AdvancedLogger.shared.getStringLogs { (log) in
             XCTAssertNotNil(log, "Error with write log. Logger return nil after write!")
             XCTAssertEqual(self.testLog, log!)
+            expectation.fulfill()
         }
         
         AdvancedLogger.shared.cleanLogs()
+        wait(for: [expectation], timeout: 3.0)
     }
     
     func testUpdateCryptoKeys() {
         
+        let expectation = XCTestExpectation(description: "AdvancedLogget class: testUpdateCryptoKeys")
+        
         var dataWithDefaultKey: Data?
-        var dataWithCustomtKey: Data?
         
         AdvancedLogger.shared.encryptData = true
         AdvancedLogger.shared.addNew(log: self.testLog, type: .execution)
@@ -66,11 +75,11 @@ class AdvancedLoggerTest: XCTestCase {
         
         AdvancedLogger.shared.getDataLogs { (data) in
             XCTAssertNotNil(data, "Error with write log. Logger return nil after write!")
-            dataWithCustomtKey = data
+            XCTAssertEqual(dataWithDefaultKey, data)
+            expectation.fulfill()
         }
         
-        XCTAssertEqual(dataWithDefaultKey, dataWithCustomtKey)
-        
         AdvancedLogger.shared.cleanLogs()
+        wait(for: [expectation], timeout: 3.0)
     }
 }
