@@ -27,6 +27,7 @@ class ALCryptoTest: XCTestCase {
     }
     
     func testCrypt() {
+        let expectation = XCTestExpectation(description: "AdvancedLogget class: testCrypt")
         var data: Data?
         self.cryptoManager.encrypt(string: self.testStringToCrypt) { (_data, error) in
             XCTAssertNil(error, error?.errorDescription ?? "")
@@ -36,12 +37,16 @@ class ALCryptoTest: XCTestCase {
             XCTAssertNil(error, error?.errorDescription ?? "")
             let resultString = String(decoding: _data ?? Data(), as: UTF8.self)
             XCTAssertEqual(resultString, self.testStringToCrypt)
+            expectation.fulfill()
         }
+        wait(for: [expectation], timeout: 3.0)
     }
     
     func testInvalidUpdateKeys() {
+        let expectation = XCTestExpectation(description: "AdvancedLogget class: testInvalidUpdateKeys")
         let keys = ALAESCryptoInitModel(cryptoKey: "Invalid key", initialVector: "Invalid IV")
         XCTAssertThrowsError(try self.cryptoManager.update(cryptoKeys: keys), "Invalid keys") { (error) in
+            expectation.fulfill()
             if let _error = error as? ALCryptoManagerError {
                 XCTAssertTrue(_error == .wrongKey || _error == .wrongInitalVector)
                 return
@@ -49,6 +54,7 @@ class ALCryptoTest: XCTestCase {
                 XCTAssert(false)
             }
         }
+        wait(for: [expectation], timeout: 3.0)
     }
     
     func testSuccessUpdateKeys() {
