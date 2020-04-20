@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4080995244E063200D27BD4 /* azure-pipelines.yml in Resources */ = {isa = PBXBuildFile; fileRef = D4080994244E063200D27BD4 /* azure-pipelines.yml */; };
 		D40A242024406E920057B5D2 /* ALCryptoInitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A241F24406E920057B5D2 /* ALCryptoInitModel.swift */; };
 		D4251BAE243B04FF002A41D4 /* ALEncryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BAD243B04FF002A41D4 /* ALEncryptionManager.swift */; };
 		D4251BB0243B050B002A41D4 /* ALEncryptionManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BAF243B050B002A41D4 /* ALEncryptionManagerProtocol.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D4080994244E063200D27BD4 /* azure-pipelines.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "azure-pipelines.yml"; sourceTree = "<group>"; };
 		D40A241F24406E920057B5D2 /* ALCryptoInitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCryptoInitModel.swift; sourceTree = "<group>"; };
 		D4251BAD243B04FF002A41D4 /* ALEncryptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManager.swift; sourceTree = "<group>"; };
 		D4251BAF243B050B002A41D4 /* ALEncryptionManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManagerProtocol.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		D47AF141243A63AA0090DFAA = {
 			isa = PBXGroup;
 			children = (
+				D4080994244E063200D27BD4 /* azure-pipelines.yml */,
 				D47AF14D243A63AA0090DFAA /* AdvancedLogger */,
 				D47AF158243A63AA0090DFAA /* AdvancedLoggerTests */,
 				D47AC552243C5AA90044B94C /* AdvancedLoggerExample */,
@@ -440,6 +443,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4080995244E063200D27BD4 /* azure-pipelines.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
