@@ -31,7 +31,7 @@ class AdvancedLoggerTest: XCTestCase {
         
         AdvancedLogger.shared.getStringLogs { (log) in
             XCTAssertNotNil(log, "Error with write log. Logger return nil after write!")
-            XCTAssertEqual(self.testLog, log!)
+            XCTAssert(log!.contains(self.testLog))
             expectation.fulfill()
         }
         AdvancedLogger.shared.cleanLogs()
@@ -46,7 +46,7 @@ class AdvancedLoggerTest: XCTestCase {
         
         AdvancedLogger.shared.getStringLogs { (log) in
             XCTAssertNotNil(log, "Error with write log. Logger return nil after write!")
-            XCTAssertEqual(self.testLog, log!)
+            XCTAssert(log!.contains(self.testLog))
             expectation.fulfill()
         }
         
