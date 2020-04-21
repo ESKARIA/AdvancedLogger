@@ -12,6 +12,5 @@ steps:
     actions: 'clean test build'
     xcWorkspacePath: '**/*.xcodeproj'
     scheme: 'AdvancedLogger'
-    sdk: 'iphoneos iphonesimulator'
     configuration: 'Release'
     xcodeVersion: 'default'
