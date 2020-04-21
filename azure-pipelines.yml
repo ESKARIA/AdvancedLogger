@@ -9,9 +9,9 @@ pool:
 steps:
 - task: Xcode@5
   inputs:
-    actions: 'test'
+    actions: 'clean test build'
     xcWorkspacePath: '**/*.xcodeproj'
     scheme: 'AdvancedLogger'
-    sdk: 'iphoneos'
+    sdk: 'iphoneos iphonesimulator'
     configuration: 'Release'
     xcodeVersion: 'default'
