@@ -4,13 +4,27 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/xcode
 
 pool:
-  vmImage: 'macOS 10.14'
+    vmImage: 'macOS-10.15'
+    
+variables:
+    scheme: 'myCurrencyExchange'
+    sdk: 'iphoneos'
+    configuration: 'Debug'
 
 steps:
 - task: Xcode@5
-  inputs:
-    actions: 'clean test build'
-    xcWorkspacePath: '**/*.xcodeproj'
-    scheme: 'AdvancedLogger'
-    configuration: 'Release'
+displayName: 'Running XCTest'
+inputs:
+    actions: 'test'
+    scheme: '$(scheme)'
+    sdk: 'iphonesimulator'
+    configuration: '$(configuration)'
     xcodeVersion: 'default'
+    packageApp: false
+    xcWorkspacePath: 'AdvancedLogger.xcodeproj'
+    destinationSimulators: 'iPhone 11'
+    destinationTypeOption: 'simulators'
+    destinationPlatformOption: 'iOS'
+    signingOption: "auto"
+    useXcpretty: true
+    publishJUnitResults: 'build/reports/unit.xml'
