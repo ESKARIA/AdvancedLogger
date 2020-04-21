@@ -10,6 +10,7 @@ steps:
 - task: Xcode@5
   inputs:
     actions: 'test'
+    xcWorkspacePath: '**/*.xcodeproj'
     scheme: 'AdvancedLogger'
     sdk: 'iphoneos'
     configuration: 'Release'
