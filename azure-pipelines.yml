@@ -15,11 +15,8 @@ steps:
   inputs:
     actions: 'test'
     scheme: 'AdvancedLogger'
-    sdk: 'iphonesimulator'
+    sdk: 'macosx'
     configuration: 'Debug'
     xcWorkspacePath: 'AdvancedLogger.xcodeproj'
-    destinationSimulators: 'iPhone 11'
-    destinationTypeOption: 'simulators'
-    destinationPlatformOption: 'iOS'
     signingOption: "auto"
     xcodeVersion: '11'
