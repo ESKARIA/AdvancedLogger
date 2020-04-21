@@ -8,7 +8,7 @@ pool:
 
 trigger:
     - master
-    - feature/Pipelines
+    - develop
 
 steps:
 - task: Xcode@5
