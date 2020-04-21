@@ -9,7 +9,7 @@ pool:
 steps:
 - task: Xcode@5
   inputs:
-    actions: 'test' 'build'
+    actions: 'test'
     scheme: 'AdvancedLogger'
     sdk: 'iphoneos'
     configuration: 'Release'
