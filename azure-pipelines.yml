@@ -7,24 +7,28 @@ pool:
     vmImage: 'macOS-10.15'
     
 variables:
-    scheme: 'myCurrencyExchange'
+    scheme: 'AdvancedLogger'
     sdk: 'iphoneos'
     configuration: 'Debug'
+    
+trigger:
+    - master
+    - feature/Pipelines
 
 steps:
 - task: Xcode@5
-displayName: 'Running XCTest'
-inputs:
-    actions: 'test'
-    scheme: '$(scheme)'
-    sdk: 'iphonesimulator'
-    configuration: '$(configuration)'
-    xcodeVersion: 'default'
-    packageApp: false
-    xcWorkspacePath: 'AdvancedLogger.xcodeproj'
-    destinationSimulators: 'iPhone 11'
-    destinationTypeOption: 'simulators'
-    destinationPlatformOption: 'iOS'
-    signingOption: "auto"
-    useXcpretty: true
-    publishJUnitResults: 'build/reports/unit.xml'
+    displayName: 'Running XCTest'
+    inputs:
+        actions: 'test'
+        scheme: '$(scheme)'
+        sdk: 'iphonesimulator'
+        configuration: '$(configuration)'
+        xcodeVersion: 'default'
+        packageApp: false
+        xcWorkspacePath: 'AdvancedLogger.xcodeproj'
+        destinationSimulators: 'iPhone 11'
+        destinationTypeOption: 'simulators'
+        destinationPlatformOption: 'iOS'
+        signingOption: "auto"
+        useXcpretty: true
+        publishJUnitResults: 'build/reports/unit.xml'
