@@ -5,29 +5,21 @@
 
 pool:
     vmImage: 'macOS-10.15'
-    
-variables:
-    scheme: 'AdvancedLogger'
-    sdk: 'iphoneos'
-    configuration: 'Debug'
-    
+
 trigger:
     - master
     - feature/Pipelines
 
 steps:
 - task: Xcode@5
-    inputs:
-        actions: 'test'
-        scheme: '$(scheme)'
-        sdk: 'iphonesimulator'
-        configuration: '$(configuration)'
-        xcodeVersion: 'default'
-        packageApp: false
-        xcWorkspacePath: 'AdvancedLogger.xcodeproj'
-        destinationSimulators: 'iPhone 11'
-        destinationTypeOption: 'simulators'
-        destinationPlatformOption: 'iOS'
-        signingOption: "auto"
-        useXcpretty: true
-        publishJUnitResults: 'build/reports/unit.xml'
+  inputs:
+    actions: 'test'
+    scheme: 'AdvancedLogger'
+    sdk: 'iphonesimulator'
+    configuration: 'Debug'
+    xcWorkspacePath: 'AdvancedLogger.xcodeproj'
+    destinationSimulators: 'iPhone 11'
+    destinationTypeOption: 'simulators'
+    destinationPlatformOption: 'iOS'
+    signingOption: "auto"
+    xcodeVersion: '11'
