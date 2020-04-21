@@ -17,7 +17,6 @@ trigger:
 
 steps:
 - task: Xcode@5
-    displayName: 'Running XCTest'
     inputs:
         actions: 'test'
         scheme: '$(scheme)'
