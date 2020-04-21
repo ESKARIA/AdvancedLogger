@@ -23,18 +23,22 @@ class ALFileManagerTest: XCTestCase {
         self.diskManager = nil
     }
     
-    func testWrite() {
+    func testWriteReadCycle() {
         let data = "AdvancedLoggerFileManagerTest".data(using: .utf8) ?? Data()
         self.diskManager.write(data: data) { (error) in
             XCTAssertNil(error, error?.localizedDescription ?? "")
         }
         self.diskManager.read { (_data) in
             XCTAssertEqual(data, _data)
+            
+        }
+        
+        self.diskManager.clean { (error) in
+            XCTAssertNil(error)
         }
     }
 
     func testClean() {
-        
         let data = "AdvancedLoggerFileManagerTest".data(using: .utf8) ?? Data()
         self.diskManager.write(data: data) { (error) in
             XCTAssertNil(error, error?.localizedDescription ?? "")
