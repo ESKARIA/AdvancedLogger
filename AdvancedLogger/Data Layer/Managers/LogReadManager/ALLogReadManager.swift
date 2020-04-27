@@ -16,6 +16,7 @@ struct ALLogReadManager {
     private var diskManager: ALFileDiskManagerProtocol
     private var cryptoManager: ALCryptoManagerProtocol
     private var queue: DispatchQueue
+    private let decoder: JSONDecoder
     
     init(diskManager: ALFileDiskManagerProtocol,
          cryptoManager: ALCryptoManagerProtocol,
@@ -24,60 +25,76 @@ struct ALLogReadManager {
         self.diskManager = diskManager
         self.cryptoManager = cryptoManager
         self.queue = DispatchQueue(label: queueLabel, qos: qos)
+        self.decoder = JSONDecoder()
     }
 }
 
 // MARK: - ALLogReadManagerProtocol
 
 extension ALLogReadManager: ALLogReadManagerProtocol {
-
+    
     /// Получить лог файл в String формате
     /// - Parameters:
     ///   - isEncrypted: используется ли шифрование
     ///   - completion: completion блок
-    func getStringLogs(isEncrypted: Bool, completion: @escaping (String?) -> Void) {
+    func getLogs(isEncrypted: Bool, completion: @escaping ([AdvancedLoggerModel]?) -> Void) {
         self.queue.sync {
             self.diskManager.read { (data) in
                 if let data = data {
-                    if isEncrypted {
+                    
+                    var resultData = Data()
+                    
+                    switch isEncrypted {
+                    case true:
                         self.cryptoManager.decrypt(data: data) { (log, error) in
                             if let error = error {
                                 NSLog("AdvancedLogger error while get string log: \(error.errorDescription)")
+                                return
                             }
-                            let resultData = String(decoding: log ?? Data(), as: UTF8.self)
-                            completion(resultData)
+                            resultData = log ?? Data()
                         }
-                    } else {
-                        let log = String(data: data, encoding: .utf8)
-                        completion(log)
+                    case false:
+                        resultData = data
                     }
+                    do {
+                        let resultLogs = try decoder.decode([AdvancedLoggerModel].self, from: resultData)
+                        completion(resultLogs)
+                    } catch {
+                        completion(nil)
+                    }
+                } else {
+                    completion(nil)
                 }
             }
         }
     }
     
     /// Получить лог файл в Data формате
-       /// - Parameters:
-       ///   - isEncrypted: используется ли шифрование
-       ///   - completion: completion блок
-       func getDataLogs(isEncrypted: Bool, completion: @escaping (Data?) -> Void) {
-           self.queue.sync {
-               self.diskManager.read { (data) in
-                   if let data = data {
-                       if isEncrypted {
-                           self.cryptoManager.decrypt(data: data) { (log, error) in
-                               if let error = error {
-                                   NSLog("AdvancedLogger error while get string log: \(error.errorDescription)")
-                               }
-                               completion(log)
-                           }
-                       } else {
-                           completion(data)
-                       }
-                   }
-               }
-           }
-       }
+    /// - Parameters:
+    ///   - isEncrypted: используется ли шифрование
+    ///   - completion: completion блок
+    func getJSONLogs(isEncrypted: Bool, completion: @escaping (Data?) -> Void) {
+        self.queue.sync {
+            self.diskManager.read { (data) in
+                if let data = data {
+                    var resultData: Data?
+                    switch isEncrypted {
+                    case true:
+                        self.cryptoManager.decrypt(data: data) { (log, error) in
+                            if let error = error {
+                                NSLog("AdvancedLogger error while get string log: \(error.errorDescription)")
+                                return
+                            }
+                            resultData = log
+                        }
+                    case false:
+                        resultData = data
+                    }
+                    completion(resultData)
+                }
+            }
+        }
+    }
     
     /// update crypto keys for cryptomanager
     /// - Parameter keys: new keys
