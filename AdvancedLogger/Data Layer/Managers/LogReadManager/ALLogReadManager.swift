@@ -56,7 +56,6 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
                     case false:
                         resultData = data
                     }
-                    
                     do {
                         let resultLogs = try decoder.decode([AdvancedLoggerModel].self, from: resultData)
                         completion(resultLogs)

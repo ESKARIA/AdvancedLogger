@@ -57,21 +57,27 @@ struct ALFilePopulateManager {
     ///   - data: exist data in storage
     ///   - size: max size
     /// - Returns: result data
-    private func prepareSize(data: Data, size: Int) -> Data {
+    private func prepareSize(data: Data, size: Int) -> [AdvancedLoggerModel] {
+        var resultModel = [AdvancedLoggerModel]()
         if data.count <= size {
-            return data
+            do {
+                return try self.decoder.decode([AdvancedLoggerModel].self, from: data)
+            } catch {
+                return resultModel
+            }
         } else {
-            var result = data
-            while result.count > size {
+            var resultData = data
+            while resultData.count > size {
                 do {
-                    var logs = try self.decoder.decode([AdvancedLoggerModel].self, from: result)
+                    var logs = try self.decoder.decode([AdvancedLoggerModel].self, from: resultData)
                     logs.removeFirst()
-                    result = try self.encoder.encode(logs)
+                    resultModel = logs
+                    resultData = try self.encoder.encode(resultModel)
                 } catch {
-                    
+                    return resultModel
                 }
             }
-            return result
+            return resultModel
         }
     }
 }
@@ -96,7 +102,7 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
         
         let _log = self.addDebugData(to: log, logType: logType)
         
-        var resultData = Data()
+        var resultModel = [AdvancedLoggerModel]()
         
         //if there are exist data get this
         if let _data = existData {
@@ -111,14 +117,15 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
             }
             
             if let __existData = _existData {
-                resultData.append(self.prepareSize(data: __existData, size: maxSizeData))
+                resultModel.append(contentsOf: self.prepareSize(data: __existData, size: maxSizeData))
             }
         }
         
         do {
-            var newLog = try self.encoder.encode(_log)
+            resultModel.append(_log)
+            var resultData = try self.encoder.encode(resultModel)
             if isUsedEncryption {
-                self.cryptoManager.encrypt(data: newLog) { (data, error) in
+                self.cryptoManager.encrypt(data: resultData) { (data, error) in
                     if let error = error {
                         completion(nil, .encryptError(error: error))
                         return
@@ -127,11 +134,9 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
                         completion(nil, .encryptError(error: .emptyData))
                         return
                     }
-                    
-                    newLog = _data
+                    resultData = _data
                 }
             }
-            resultData.append(newLog)
             completion(resultData, nil)
             return
         } catch {
