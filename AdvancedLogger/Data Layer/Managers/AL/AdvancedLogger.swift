@@ -70,21 +70,17 @@ extension AdvancedLogger: AdvancedLoggerProtocol {
     
     /// Get logs in string format
     /// - Parameter completion: completion with string logs
-    public func getStringLogs(completion: @escaping (String?) -> Void) {
+    public func getLogs(completion: @escaping ([AdvancedLoggerModel]?) -> Void) {
         self.queue.async {
-            self.readManager.getStringLogs(isEncrypted: self.encryptData) { (logs) in
-                completion(logs)
-            }
+            self.readManager.getLogs(isEncrypted: self.encryptData, completion: completion)
         }
     }
     
     /// Get logs in data format
     /// - Parameter completion: completion with data logs
-    public func getDataLogs(completion: @escaping (Data?) -> Void) {
+    public func getJSONDataLogs(completion: @escaping (Data?) -> Void) {
         self.queue.async {
-            self.readManager.getDataLogs(isEncrypted: self.encryptData) { (logs) in
-                completion(logs)
-            }
+            self.readManager.getJSONLogs(isEncrypted: self.encryptData, completion: completion)
         }
     }
     

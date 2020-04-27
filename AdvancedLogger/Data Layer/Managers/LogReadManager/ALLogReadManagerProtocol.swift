@@ -11,16 +11,16 @@ import Foundation
 /// Protocol for manager that get log from disk, decrypt it if needed and return
 protocol ALLogReadManagerProtocol {
     
-    /// Получить лог файл в String формате
+    /// Get logs in model AdvancedLoggerModel
     /// - Parameters:
-    ///   - isEncrypted: используется ли шифрование
-    ///   - completion: completion блок 
-    func getStringLogs(isEncrypted: Bool, completion: @escaping (String?) -> Void)
-    /// Получить лог файл в Data формате
+    ///   - isEncrypted: do you use crypto?
+    ///   - completion: completion block
+    func getLogs(isEncrypted: Bool, completion: @escaping ([AdvancedLoggerModel]?) -> Void)
+    /// Get log in JSON format
     /// - Parameters:
-    ///   - isEncrypted: используется ли шифрование
-    ///   - completion: completion блок
-    func getDataLogs(isEncrypted: Bool, completion: @escaping (Data?) -> Void)
+    ///   - isEncrypted: do you use crypto?
+    ///   - completion: completion block
+    func getJSONLogs(isEncrypted: Bool, completion: @escaping (Data?) -> Void)
     /// update crypto keys for cryptomanager
     /// - Parameter keys: new keys
     mutating func update(cryptoKeys keys: ALAESCryptoInitModel) throws

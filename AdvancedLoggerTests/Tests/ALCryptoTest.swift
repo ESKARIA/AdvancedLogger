@@ -12,31 +12,37 @@ import XCTest
 class ALCryptoTest: XCTestCase {
     
     var cryptoManager: ALCryptoManagerProtocol!
-    var testStringToCrypt: String!
+    var testModel: Data!
+    private var encoder: JSONEncoder!
+    private var decoder: JSONDecoder!
     
     override func setUp() {
         super.setUp()
         self.cryptoManager = ALCryptoManager(initKey: Constaints.Crypto.cryptoKey.rawValue, initIV: Constaints.Crypto.cryptoInitialVector.rawValue)
-        self.testStringToCrypt = "AdvancedLogger Crypto Test"
+        self.encoder = JSONEncoder()
+        self.decoder = JSONDecoder()
+        
+        self.testModel = try? self.encoder.encode(AdvancedLoggerModel(time: "", log: "AdvancedLogger Crypto Test", type: .execution))
     }
     
     override func tearDown() {
         super.tearDown()
         self.cryptoManager = nil
-        self.testStringToCrypt = nil
+        self.testModel = nil
+        self.decoder = nil
+        self.encoder = nil
     }
     
     func testCrypt() {
         let expectation = XCTestExpectation(description: "AdvancedLogget class: testCrypt")
         var data: Data?
-        self.cryptoManager.encrypt(string: self.testStringToCrypt) { (_data, error) in
+        self.cryptoManager.encrypt(data: self.testModel) { (_data, error) in
             XCTAssertNil(error, error?.errorDescription ?? "")
             data = _data
         }
         self.cryptoManager.decrypt(data: data) { (_data, error) in
             XCTAssertNil(error, error?.errorDescription ?? "")
-            let resultString = String(decoding: _data ?? Data(), as: UTF8.self)
-            XCTAssertEqual(resultString, self.testStringToCrypt)
+            XCTAssertEqual(_data, self.testModel)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 3.0)
