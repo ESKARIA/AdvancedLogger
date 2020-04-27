@@ -22,12 +22,12 @@ public protocol AdvancedLoggerProtocol {
     ///   - log: description log
     ///   - type: log type for view format in logfile
     func addNew(log: String, type: AdvancedLoggerEvent)
-    /// Get logs in string format
-    /// - Parameter completion: completion with string logs
-    func getStringLogs(completion: @escaping (String?) -> Void)
-    /// Get logs in data format
+    /// Get logs in log model format
+    /// - Parameter completion: completion with model  logs
+    func getLogs(completion: @escaping ([AdvancedLoggerModel]?) -> Void)
+    /// Get logs in data format (encoded JSON)
     /// - Parameter completion: completion with data logs
-    func getDataLogs(completion: @escaping (Data?) -> Void)
+    func getJSONDataLogs(completion: @escaping (Data?) -> Void)
     /// Clean all logs
     func cleanLogs()
 }

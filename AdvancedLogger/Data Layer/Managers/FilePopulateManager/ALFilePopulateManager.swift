@@ -14,9 +14,13 @@ import Foundation
 struct ALFilePopulateManager {
     
     private var cryptoManager: ALCryptoManagerProtocol
+    private let decoder: JSONDecoder
+    private let encoder: JSONEncoder
     
     init(cryptoManager: ALCryptoManagerProtocol) {
         self.cryptoManager = cryptoManager
+        self.decoder = JSONDecoder()
+        self.encoder = JSONEncoder()
     }
     
     /// get current date with needed format
@@ -30,7 +34,8 @@ struct ALFilePopulateManager {
     /// Add debug data
     /// - Parameter log: string with your log
     /// - Returns: return result log
-    private func addDebugData(to log: String, logType: AdvancedLoggerEvent) -> String {
+    private func addDebugData(to log: String, logType: AdvancedLoggerEvent) -> AdvancedLoggerModel {
+        
         var emoji = "🖥"
         switch logType {
         case .warning:
@@ -44,7 +49,30 @@ struct ALFilePopulateManager {
         case .execution:
             emoji = "➡️"
         }
-        return "\(emoji) Time: \(self.getCurrentDate()) Description: \(log) \n"
+        return AdvancedLoggerModel(time: self.getCurrentDate(), log: "\(emoji) Log: \(log)", type: logType)
+    }
+    
+    /// check data size
+    /// - Parameters:
+    ///   - data: exist data in storage
+    ///   - size: max size
+    /// - Returns: result data
+    private func prepareSize(data: Data, size: Int) -> Data {
+        if data.count <= size {
+            return data
+        } else {
+            var result = data
+            while result.count > size {
+                do {
+                    var logs = try self.decoder.decode([AdvancedLoggerModel].self, from: result)
+                    logs.removeFirst()
+                    result = try self.encoder.encode(logs)
+                } catch {
+                    
+                }
+            }
+            return result
+        }
     }
 }
 
@@ -67,55 +95,45 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
                   completion: (Data?, ALFilePopulateManagerErrors?) -> Void) {
         
         let _log = self.addDebugData(to: log, logType: logType)
-        var data = Data()
         
+        var resultData = Data()
+        
+        //if there are exist data get this
         if let _data = existData {
-            if _data.count > maxSizeData {
-                var string = ""
-                switch isUsedEncryption {
-                case true:
-                    self.cryptoManager.decrypt(data: data) { (decryptData, error) in
-                        let resultData = String(decoding: decryptData ?? Data(), as: UTF8.self)
-                        string = resultData
-                    }
-                case false:
-                    string = String(data: _data, encoding: .utf8) ?? ""
+            var _existData: Data?
+            switch isUsedEncryption {
+            case true:
+                self.cryptoManager.decrypt(data: _data) { (__data, error) in
+                    _existData = __data
                 }
-                var token = string.components(separatedBy: "\n")
-                // TODO: remake to data size instead string size
-                while string.data(using: .utf8)?.count ?? 0 > maxSizeData {
-                    token.removeFirst()
-                    string = token.joined()
-                }
-                var needSizeData: Data? = Data()
-                switch isUsedEncryption {
-                case true:
-                    self.cryptoManager.encrypt(string: string) { (data, error) in
-                        needSizeData = data
-                    }
-                case false:
-                    needSizeData = string.data(using: .utf8)
-                }
-                if let __data = needSizeData {
-                    data += __data
-                }
-            } else {
-                data += _data
+            case false:
+                _existData = _data
+            }
+            
+            if let __existData = _existData {
+                resultData.append(self.prepareSize(data: __existData, size: maxSizeData))
             }
         }
-        if isUsedEncryption {
-            self.cryptoManager.encrypt(string: _log) { (encryptedData, error) in
-                if let encryptedData = encryptedData {
-                    data += encryptedData
-                } else if let error = error {
-                    completion(nil, .encryptError(error: error))
-                    return
+        
+        do {
+            var newLog = try self.encoder.encode(_log)
+            if isUsedEncryption {
+                self.cryptoManager.encrypt(data: newLog) { (data, error) in
+                    
+                    guard let _data = data, error != nil else {
+                        completion(nil, .encryptError(error: error!))
+                        return
+                    }
+                    
+                    newLog = _data
                 }
             }
-        } else if let newLog = _log.data(using: .utf8) {
-            data += newLog
+            resultData.append(newLog)
+            completion(resultData, nil)
+            return
+        } catch {
+            completion(nil, .errorWithEncode)
         }
-        completion(data, nil)
     }
     
     /// update crypto keys for cryptomanager

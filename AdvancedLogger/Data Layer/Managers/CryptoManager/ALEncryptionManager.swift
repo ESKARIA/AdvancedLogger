@@ -67,8 +67,8 @@ extension ALCryptoManager: ALCryptoManagerProtocol {
     /// encrypt data with key
     /// - Parameter string: string to crypt
     /// - Parameter completion: completion with optional data and optional error
-    func encrypt(string: String, completion: (Data?, ALCryptoManagerError?) -> Void) {
-        self.crypt(data: string.data(using: .utf8), option: CCOperation(kCCEncrypt), completion: {data, error in
+    func encrypt(data: Data, completion: (Data?, ALCryptoManagerError?) -> Void) {
+        self.crypt(data: data, option: CCOperation(kCCEncrypt), completion: {data, error in
             completion(data, error)
         })
     }
