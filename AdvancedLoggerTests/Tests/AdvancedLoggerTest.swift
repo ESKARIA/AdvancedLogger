@@ -29,11 +29,12 @@ class AdvancedLoggerTest: XCTestCase {
         AdvancedLogger.shared.encryptData = false
         AdvancedLogger.shared.addNew(log: self.testLog, type: .execution)
         
-        AdvancedLogger.shared.getStringLogs { (log) in
-            XCTAssertNotNil(log, "Error with write log. Logger return nil after write!")
-            XCTAssert(log!.contains(self.testLog))
+        AdvancedLogger.shared.getLogs { (model) in
+            XCTAssertNotNil(model, "Error with write log. Logger return nil after write!")
+            XCTAssert(model!.first!.log.contains(self.testLog))
             expectation.fulfill()
         }
+
         AdvancedLogger.shared.cleanLogs()
         wait(for: [expectation], timeout: 3.0)
     }
@@ -44,9 +45,9 @@ class AdvancedLoggerTest: XCTestCase {
         AdvancedLogger.shared.encryptData = true
         AdvancedLogger.shared.addNew(log: self.testLog, type: .execution)
         
-        AdvancedLogger.shared.getStringLogs { (log) in
-            XCTAssertNotNil(log, "Error with write log. Logger return nil after write!")
-            XCTAssert(log!.contains(self.testLog))
+        AdvancedLogger.shared.getLogs { (model) in
+            XCTAssertNotNil(model, "Error with write log. Logger return nil after write!")
+            XCTAssert(model!.first!.log.contains(self.testLog))
             expectation.fulfill()
         }
         
@@ -63,7 +64,7 @@ class AdvancedLoggerTest: XCTestCase {
         AdvancedLogger.shared.encryptData = true
         AdvancedLogger.shared.addNew(log: self.testLog, type: .execution)
         
-        AdvancedLogger.shared.getDataLogs { (data) in
+        AdvancedLogger.shared.getJSONDataLogs { (data) in
             XCTAssertNotNil(data, "Error with write log. Logger return nil after write!")
             dataWithDefaultKey = data
         }
@@ -73,12 +74,12 @@ class AdvancedLoggerTest: XCTestCase {
         AdvancedLogger.shared.aesCryptoKeys = ALAESCryptoInitModel(cryptoKey: "98765432101234567890123456789012", initialVector: "zxcdefghijklmnop")
         AdvancedLogger.shared.addNew(log: self.testLog, type: .execution)
         
-        AdvancedLogger.shared.getDataLogs { (data) in
+        AdvancedLogger.shared.getJSONDataLogs { (data) in
             XCTAssertNotNil(data, "Error with write log. Logger return nil after write!")
             XCTAssertEqual(dataWithDefaultKey, data)
             expectation.fulfill()
         }
-        
+
         AdvancedLogger.shared.cleanLogs()
         wait(for: [expectation], timeout: 3.0)
     }

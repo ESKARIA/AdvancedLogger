@@ -61,8 +61,10 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
                         let resultLogs = try decoder.decode([AdvancedLoggerModel].self, from: resultData)
                         completion(resultLogs)
                     } catch {
-                        
+                        completion(nil)
                     }
+                } else {
+                    completion(nil)
                 }
             }
         }

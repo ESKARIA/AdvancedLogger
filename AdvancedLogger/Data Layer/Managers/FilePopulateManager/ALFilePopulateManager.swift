@@ -119,9 +119,12 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
             var newLog = try self.encoder.encode(_log)
             if isUsedEncryption {
                 self.cryptoManager.encrypt(data: newLog) { (data, error) in
-                    
-                    guard let _data = data, error != nil else {
-                        completion(nil, .encryptError(error: error!))
+                    if let error = error {
+                        completion(nil, .encryptError(error: error))
+                        return
+                    }
+                    guard let _data = data else {
+                        completion(nil, .encryptError(error: .emptyData))
                         return
                     }
                     
