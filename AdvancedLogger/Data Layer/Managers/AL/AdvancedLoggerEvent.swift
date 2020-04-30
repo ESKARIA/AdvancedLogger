@@ -8,13 +8,18 @@
 
 import Foundation
 
-/// Log type for write.
+/// Log type for write. Containt different event like warning\crash\etc
 public enum AdvancedLoggerEvent {
     
+    /// If you get warning use this event
     case warning
+    /// if you get error (non fatal) use this case
     case error
+    /// if your app crash use this
     case crash
+    /// if you collect logs of any func and func successed use this one
     case success
+    /// just event for logs any execution (in run state) logs from app
     case execution
 }
 
@@ -28,6 +33,9 @@ extension AdvancedLoggerEvent: Codable {
         case unknownValue
     }
     
+    ///  !Dont use this! Public init for encode\decode.
+    /// - Parameter decoder: decoder
+    /// - Throws: error throw
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Key.self)
         let rawValue = try container.decode(Int.self, forKey: .rawValue)
@@ -47,6 +55,9 @@ extension AdvancedLoggerEvent: Codable {
         }
     }
     
+    ///  !Dont use this! Encode to encoder
+    /// - Parameter encoder: encoder
+    /// - Throws: throw
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: Key.self)
         switch self {

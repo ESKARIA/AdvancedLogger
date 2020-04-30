@@ -1,0 +1,12 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/dmitriytoropkin/WithoutSync/Escaria/AdvancedLogger/AdvancedLogger/Data Layer/Models/ALCryptoInitModel.swift",
+      "line": 18,
+      "symbol": "ALAESCryptoInitModel.init(cryptoKey:initialVector:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/dmitriytoropkin/WithoutSync/Escaria/AdvancedLogger"
+}
