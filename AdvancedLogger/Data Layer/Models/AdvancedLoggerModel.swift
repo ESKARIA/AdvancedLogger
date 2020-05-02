@@ -8,8 +8,12 @@
 
 import Foundation
 
+/// Main Model for log. Containt time stamp, log and type
 public struct AdvancedLoggerModel: Codable {
-    let time: String
-    let log: String
-    let type: AdvancedLoggerEvent
+    /// Time stamp of logs. Format - "MM-dd-yyyy HH:mm:ss"
+    public let time: String
+    /// Log in string,
+    public let log: String
+    /// Type of this log (warning\crash\error etc)
+    public let type: AdvancedLoggerEvent
 }
