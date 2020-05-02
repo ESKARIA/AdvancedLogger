@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ALAESCryptoInitModel Structure Reference</title>
+    <title>AdvancedLoggerModel Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/ALAESCryptoInitModel" class="dashAnchor"></a>
-    <a title="ALAESCryptoInitModel Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/AdvancedLoggerModel" class="dashAnchor"></a>
+    <a title="AdvancedLoggerModel Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">AdvancedLogger 1.0.0 Docs</a> (97% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">AdvancedLogger Reference</a>
         <img id="carat" src="../img/carat.png" />
-        ALAESCryptoInitModel Structure Reference
+        AdvancedLoggerModel Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -62,14 +62,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>ALAESCryptoInitModel</h1>
+            <h1>AdvancedLoggerModel</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ALAESCryptoInitModel</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">AdvancedLoggerModel</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
 
                 </div>
               </div>
-            <p>Model containt crypto key and inital vector for crypto encrypt\decrypt</p>
+            <p>Main Model for log. Containt time stamp, log and type</p>
 
           </section>
           <section class="section task-group-section">
@@ -78,9 +78,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14AdvancedLogger20ALAESCryptoInitModelV9cryptoKeySSvp"></a>
-                    <a name="//apple_ref/swift/Property/cryptoKey" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14AdvancedLogger20ALAESCryptoInitModelV9cryptoKeySSvp">cryptoKey</a>
+                    <a name="/s:14AdvancedLogger0aB5ModelV4timeSSvp"></a>
+                    <a name="//apple_ref/swift/Property/time" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AdvancedLogger0aB5ModelV4timeSSvp">time</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -88,14 +88,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>crypto key for aes encrypt\decrypt</p>
+                        <p>Time stamp of logs. Format - &ldquo;MM-dd-yyyy HH:mm:ss&rdquo;</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cryptoKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">time</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -105,9 +105,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14AdvancedLogger20ALAESCryptoInitModelV13initialVectorSSvp"></a>
-                    <a name="//apple_ref/swift/Property/initialVector" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14AdvancedLogger20ALAESCryptoInitModelV13initialVectorSSvp">initialVector</a>
+                    <a name="/s:14AdvancedLogger0aB5ModelV3logSSvp"></a>
+                    <a name="//apple_ref/swift/Property/log" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AdvancedLogger0aB5ModelV3logSSvp">log</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -115,14 +115,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>crupto initial vector for aes encrypt\decrypt</p>
+                        <p>Log in string,</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">initialVector</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">log</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -132,9 +132,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14AdvancedLogger20ALAESCryptoInitModelV9cryptoKey13initialVectorACSS_SStcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(cryptoKey:initialVector:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14AdvancedLogger20ALAESCryptoInitModelV9cryptoKey13initialVectorACSS_SStcfc">init(cryptoKey:<wbr>initialVector:<wbr>)</a>
+                    <a name="/s:14AdvancedLogger0aB5ModelV4typeAA0aB5EventOvp"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14AdvancedLogger0aB5ModelV4typeAA0aB5EventOvp">type</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -142,14 +142,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Type of this log (warning\crash\error etc)</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">cryptoKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">initialVector</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/AdvancedLoggerEvent.html">AdvancedLoggerEvent</a></span></code></pre>
 
                         </div>
                       </div>
