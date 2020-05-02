@@ -20,14 +20,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     private func testLogs() {
+        
+        //CLean logs
         AdvancedLogger.shared.cleanLogs()
+        
+        //Enable crypto in logs
         AdvancedLogger.shared.encryptData = true
+        
+        //Write logs
         AdvancedLogger.shared.addNew(log: "Test log 1", type: .warning)
         AdvancedLogger.shared.addNew(log: "Test log 2", type: .warning)
         AdvancedLogger.shared.addNew(log: "Test log 3", type: .warning)
-        AdvancedLogger.shared.getStringLogs { (logs) in
-            print("\n logs is")
-            print(logs!)
+        
+        //Read logs
+        AdvancedLogger.shared.getLogs { (logs) in
+            
+            guard let _logs = logs else { return }
+            for log in _logs {
+                print("_________")
+                print("\n logs is \(log.log) with time \(log.time)")
+            }
         }
     }
 
