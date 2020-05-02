@@ -20,6 +20,7 @@
 		D4251BC1243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BC0243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift */; };
 		D4251BC3243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BC2243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift */; };
 		D4251BC5243B24DF002A41D4 /* AdvancedLoggerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BC4243B24DF002A41D4 /* AdvancedLoggerEvent.swift */; };
+		D454BCF6245B004A0089B47B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D454BCF5245B004A0089B47B /* README.md */; };
 		D47AC554243C5AA90044B94C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AC553243C5AA90044B94C /* AppDelegate.swift */; };
 		D47AC558243C5AA90044B94C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AC557243C5AA90044B94C /* ViewController.swift */; };
 		D47AC55B243C5AA90044B94C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AC559243C5AA90044B94C /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		D4251BC0243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALLogWriteManagerProtocol.swift; sourceTree = "<group>"; };
 		D4251BC2243B1DA0002A41D4 /* ALFilePopulateManagerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALFilePopulateManagerErrors.swift; sourceTree = "<group>"; };
 		D4251BC4243B24DF002A41D4 /* AdvancedLoggerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerEvent.swift; sourceTree = "<group>"; };
+		D454BCF5245B004A0089B47B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D47AC551243C5AA90044B94C /* AdvancedLoggerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvancedLoggerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47AC553243C5AA90044B94C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D47AC557243C5AA90044B94C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		D47AF141243A63AA0090DFAA = {
 			isa = PBXGroup;
 			children = (
+				D454BCF5245B004A0089B47B /* README.md */,
 				D4080994244E063200D27BD4 /* azure-pipelines.yml */,
 				D47AF14D243A63AA0090DFAA /* AdvancedLogger */,
 				D47AF158243A63AA0090DFAA /* AdvancedLoggerTests */,
@@ -446,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D454BCF6245B004A0089B47B /* README.md in Resources */,
 				D4080995244E063200D27BD4 /* azure-pipelines.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

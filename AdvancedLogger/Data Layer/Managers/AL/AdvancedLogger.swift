@@ -13,7 +13,7 @@ import Foundation
 /// Main struct for interact with your app
 public struct AdvancedLogger {
     
-    init() {
+    private init() {
         self.writeManager = diresolver.getALLogWriteManager()
         self.readManager = diresolver.getALLogReadManager()
         self.queue = DispatchQueue(label: Constaints.Queue.queueAdvancedLogger.rawValue, qos: .utility)
