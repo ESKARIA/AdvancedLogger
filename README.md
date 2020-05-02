@@ -12,7 +12,7 @@ All operation execution in orher queue and you shouldnt think about manage queue
 import AdvancedLogger
 ```
 
-2) For write log use this with [model of log](Structs.html#/s:14AdvancedLogger0aB5ModelV) with [type of log](Enums/AdvancedLoggerEvent.html)
+2) For write log use this with [model of log](https://eskaria.github.io/AdvancedLogger/Structs.html#/s:14AdvancedLogger0aB5ModelV) with [type of log](https://eskaria.github.io/AdvancedLogger/Enums/AdvancedLoggerEvent.html)
 
 ```swift
 AdvancedLogger.shared.addNew(log: *MODEL OF LOG*, type: *TYPE OF LOG)
@@ -23,7 +23,7 @@ AdvancedLogger.shared.addNew(log: *MODEL OF LOG*, type: *TYPE OF LOG)
 ```swift
 AdvancedLogger.shared.getLogs { (model) in }
 ```
-where [model](Structs.html#/s:14AdvancedLogger0aB5ModelV)  -  array of logs
+where [model](https://eskaria.github.io/AdvancedLogger/Structs.html#/s:14AdvancedLogger0aB5ModelV)  -  array of logs
 
 4) For read in JSON Encoding Data fromat use 
 
