@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
     
     # 7
     s.framework = "Foundation"
-    s.dependency = "ESCrypto", :git => 'https://github.com/ESKARIA/ESCrypto.git'
+    s.dependency = "ESCrypto"
     
     # 8
     s.source_files = "AdvancedLogger/**/*.{swift}"
