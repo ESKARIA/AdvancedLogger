@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D404060724686EC900D5F3DF /* ESCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = D404060624686EC900D5F3DF /* ESCrypto */; };
+		D40406092468963400D5F3DF /* AdvancedLogger.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D40406082468963400D5F3DF /* AdvancedLogger.podspec */; };
 		D4080995244E063200D27BD4 /* azure-pipelines.yml in Resources */ = {isa = PBXBuildFile; fileRef = D4080994244E063200D27BD4 /* azure-pipelines.yml */; };
 		D40A242024406E920057B5D2 /* ALCryptoInitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A241F24406E920057B5D2 /* ALCryptoInitModel.swift */; };
 		D4251BB5243B0F31002A41D4 /* Constaints+QueueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB4243B0F31002A41D4 /* Constaints+QueueName.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D40406082468963400D5F3DF /* AdvancedLogger.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AdvancedLogger.podspec; sourceTree = "<group>"; };
 		D4080994244E063200D27BD4 /* azure-pipelines.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "azure-pipelines.yml"; sourceTree = "<group>"; };
 		D40A241F24406E920057B5D2 /* ALCryptoInitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCryptoInitModel.swift; sourceTree = "<group>"; };
 		D4251BB4243B0F31002A41D4 /* Constaints+QueueName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constaints+QueueName.swift"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		D47AF141243A63AA0090DFAA = {
 			isa = PBXGroup;
 			children = (
+				D40406082468963400D5F3DF /* AdvancedLogger.podspec */,
 				D454BCF5245B004A0089B47B /* README.md */,
 				D4080994244E063200D27BD4 /* azure-pipelines.yml */,
 				D47AF14D243A63AA0090DFAA /* AdvancedLogger */,
@@ -438,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D454BCF6245B004A0089B47B /* README.md in Resources */,
+				D40406092468963400D5F3DF /* AdvancedLogger.podspec in Resources */,
 				D4080995244E063200D27BD4 /* azure-pipelines.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
