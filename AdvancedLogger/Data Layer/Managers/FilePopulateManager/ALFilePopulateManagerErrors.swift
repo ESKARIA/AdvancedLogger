@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import ESCrypto
 
 /// Description error while populate model for file
 enum ALFilePopulateManagerErrors {
-    case encryptError(error: ALCryptoManagerError)
+    case encryptError(error: ESCryptoError)
     case errorWithEncode
 }

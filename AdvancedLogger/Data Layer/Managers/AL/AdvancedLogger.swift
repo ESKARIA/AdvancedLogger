@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ESCrypto
 
 // MARK: - AdvancedLogger
 
@@ -45,8 +46,8 @@ public struct AdvancedLogger {
             try self.writeManager.update(cryptoKeys: self.aesCryptoKeys)
             try self.readManager.update(cryptoKeys: self.aesCryptoKeys)
         } catch {
-            let _error = error as? ALCryptoManagerError
-            NSLog("Advanced Logger update crypto keys error: \(String(describing: _error?.errorDescription))")
+            let _error = error as? ESCryptoError
+            NSLog("Advanced Logger update crypto keys error: \(String(describing: _error))")
         }
     }
 }

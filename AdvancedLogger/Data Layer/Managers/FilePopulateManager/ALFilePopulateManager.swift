@@ -7,17 +7,18 @@
 //
 
 import Foundation
+import ESCrypto
 
 // MARK: - FilePopulateManager
 
 /// Manager for create data file that will be writed on disk
 struct ALFilePopulateManager {
     
-    private var cryptoManager: ALCryptoManagerProtocol
+    private var cryptoManager: ESCryptoProtocol
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
     
-    init(cryptoManager: ALCryptoManagerProtocol) {
+    init(cryptoManager: ESCryptoProtocol) {
         self.cryptoManager = cryptoManager
         self.decoder = JSONDecoder()
         self.encoder = JSONEncoder()
@@ -109,7 +110,7 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
             var _existData: Data?
             switch isUsedEncryption {
             case true:
-                self.cryptoManager.decrypt(data: _data) { (__data, error) in
+                self.cryptoManager.decrypt(data: _data, cryptoType: .aes) { (__data, error) in
                     _existData = __data
                 }
             case false:
@@ -125,7 +126,7 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
             resultModel.append(_log)
             var resultData = try self.encoder.encode(resultModel)
             if isUsedEncryption {
-                self.cryptoManager.encrypt(data: resultData) { (data, error) in
+                self.cryptoManager.encrypt(data: resultData, cryptoType: .aes) { (data, error) in
                     if let error = error {
                         completion(nil, .encryptError(error: error))
                         return
@@ -147,7 +148,8 @@ extension ALFilePopulateManager: ALFilePopulateManagerProtocol {
     /// update crypto keys for cryptomanager
     /// - Parameter keys: new keys
     mutating func update(cryptoKeys keys: ALAESCryptoInitModel) throws {
-        try self.cryptoManager.update(cryptoKeys: keys)
+        self.cryptoManager.cryptoKeys = .init(aesCryptoKeys: ESAESCryptoKeysModel(aesCryptoKey: keys.cryptoKey,
+                                                                                  aesInitialVector: keys.initialVector))
     }
 }
 

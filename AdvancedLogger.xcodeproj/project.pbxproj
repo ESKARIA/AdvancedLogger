@@ -3,15 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D404060724686EC900D5F3DF /* ESCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = D404060624686EC900D5F3DF /* ESCrypto */; };
 		D4080995244E063200D27BD4 /* azure-pipelines.yml in Resources */ = {isa = PBXBuildFile; fileRef = D4080994244E063200D27BD4 /* azure-pipelines.yml */; };
 		D40A242024406E920057B5D2 /* ALCryptoInitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A241F24406E920057B5D2 /* ALCryptoInitModel.swift */; };
-		D4251BAE243B04FF002A41D4 /* ALEncryptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BAD243B04FF002A41D4 /* ALEncryptionManager.swift */; };
-		D4251BB0243B050B002A41D4 /* ALEncryptionManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BAF243B050B002A41D4 /* ALEncryptionManagerProtocol.swift */; };
-		D4251BB2243B0B38002A41D4 /* ALEncryptionManagerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB1243B0B38002A41D4 /* ALEncryptionManagerErrors.swift */; };
 		D4251BB5243B0F31002A41D4 /* Constaints+QueueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB4243B0F31002A41D4 /* Constaints+QueueName.swift */; };
 		D4251BB7243B0F4E002A41D4 /* Constaints+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB6243B0F4E002A41D4 /* Constaints+Crypto.swift */; };
 		D4251BBA243B1ABE002A41D4 /* ALLogReadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4251BB9243B1ABE002A41D4 /* ALLogReadManager.swift */; };
@@ -39,7 +37,6 @@
 		D47AF17B243A73B80090DFAA /* AdvancedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */; };
 		D47AF17F243A743A0090DFAA /* AdvancedLoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */; };
 		D490FB06245702AC00B2D657 /* AdvancedLoggerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D490FB05245702AC00B2D657 /* AdvancedLoggerModel.swift */; };
-		D49342282446563800122C84 /* ALCryptoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49342262446563800122C84 /* ALCryptoTest.swift */; };
 		D49342292446563800122C84 /* ALFileManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49342272446563800122C84 /* ALFileManagerTest.swift */; };
 		D493422B2446580100122C84 /* AdvancedLoggerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493422A2446580100122C84 /* AdvancedLoggerTest.swift */; };
 /* End PBXBuildFile section */
@@ -78,9 +75,6 @@
 /* Begin PBXFileReference section */
 		D4080994244E063200D27BD4 /* azure-pipelines.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "azure-pipelines.yml"; sourceTree = "<group>"; };
 		D40A241F24406E920057B5D2 /* ALCryptoInitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALCryptoInitModel.swift; sourceTree = "<group>"; };
-		D4251BAD243B04FF002A41D4 /* ALEncryptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManager.swift; sourceTree = "<group>"; };
-		D4251BAF243B050B002A41D4 /* ALEncryptionManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManagerProtocol.swift; sourceTree = "<group>"; };
-		D4251BB1243B0B38002A41D4 /* ALEncryptionManagerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALEncryptionManagerErrors.swift; sourceTree = "<group>"; };
 		D4251BB4243B0F31002A41D4 /* Constaints+QueueName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constaints+QueueName.swift"; sourceTree = "<group>"; };
 		D4251BB6243B0F4E002A41D4 /* Constaints+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constaints+Crypto.swift"; sourceTree = "<group>"; };
 		D4251BB9243B1ABE002A41D4 /* ALLogReadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALLogReadManager.swift; sourceTree = "<group>"; };
@@ -111,7 +105,6 @@
 		D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLogger.swift; sourceTree = "<group>"; };
 		D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerProtocol.swift; sourceTree = "<group>"; };
 		D490FB05245702AC00B2D657 /* AdvancedLoggerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerModel.swift; sourceTree = "<group>"; };
-		D49342262446563800122C84 /* ALCryptoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALCryptoTest.swift; sourceTree = "<group>"; };
 		D49342272446563800122C84 /* ALFileManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALFileManagerTest.swift; sourceTree = "<group>"; };
 		D493422A2446580100122C84 /* AdvancedLoggerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D404060724686EC900D5F3DF /* ESCrypto in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,16 +144,6 @@
 				D490FB05245702AC00B2D657 /* AdvancedLoggerModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D4251BAC243B04C4002A41D4 /* CryptoManager */ = {
-			isa = PBXGroup;
-			children = (
-				D4251BAD243B04FF002A41D4 /* ALEncryptionManager.swift */,
-				D4251BAF243B050B002A41D4 /* ALEncryptionManagerProtocol.swift */,
-				D4251BB1243B0B38002A41D4 /* ALEncryptionManagerErrors.swift */,
-			);
-			path = CryptoManager;
 			sourceTree = "<group>";
 		};
 		D4251BB3243B0F21002A41D4 /* Constaints */ = {
@@ -269,7 +253,6 @@
 				D47AF179243A73A00090DFAA /* AL */,
 				D4251BBD243B1C08002A41D4 /* LogWriteManager */,
 				D4251BB8243B1A4B002A41D4 /* LogReadManager */,
-				D4251BAC243B04C4002A41D4 /* CryptoManager */,
 				D47AF16E243A6A780090DFAA /* FilePopulateManager */,
 				D47AF167243A63BF0090DFAA /* FileManager */,
 			);
@@ -316,7 +299,6 @@
 		D49342252446563800122C84 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D49342262446563800122C84 /* ALCryptoTest.swift */,
 				D49342272446563800122C84 /* ALFileManagerTest.swift */,
 				D493422A2446580100122C84 /* AdvancedLoggerTest.swift */,
 			);
@@ -370,6 +352,9 @@
 			dependencies = (
 			);
 			name = AdvancedLogger;
+			packageProductDependencies = (
+				D404060624686EC900D5F3DF /* ESCrypto */,
+			);
 			productName = AdvancedLogger;
 			productReference = D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */;
 			productType = "com.apple.product-type.framework";
@@ -423,6 +408,9 @@
 				Base,
 			);
 			mainGroup = D47AF141243A63AA0090DFAA;
+			packageReferences = (
+				D404060524686EC900D5F3DF /* XCRemoteSwiftPackageReference "ESCrypto" */,
+			);
 			productRefGroup = D47AF14C243A63AA0090DFAA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -479,12 +467,10 @@
 			files = (
 				D4251BB5243B0F31002A41D4 /* Constaints+QueueName.swift in Sources */,
 				D47AF172243A6B380090DFAA /* ALFileManagerProtocol.swift in Sources */,
-				D4251BB2243B0B38002A41D4 /* ALEncryptionManagerErrors.swift in Sources */,
 				D4251BBA243B1ABE002A41D4 /* ALLogReadManager.swift in Sources */,
 				D47AF170243A6A890090DFAA /* ALFilePopulateManager.swift in Sources */,
 				D40A242024406E920057B5D2 /* ALCryptoInitModel.swift in Sources */,
 				D47AF177243A6C150090DFAA /* ALDIResolver.swift in Sources */,
-				D4251BB0243B050B002A41D4 /* ALEncryptionManagerProtocol.swift in Sources */,
 				D4251BBF243B1C19002A41D4 /* ALLogWriteManager.swift in Sources */,
 				D47AF17B243A73B80090DFAA /* AdvancedLogger.swift in Sources */,
 				D47AF16B243A63E30090DFAA /* ALFileDiskManager.swift in Sources */,
@@ -497,7 +483,6 @@
 				D47AF16D243A66E90090DFAA /* Constaints.swift in Sources */,
 				D4251BC5243B24DF002A41D4 /* AdvancedLoggerEvent.swift in Sources */,
 				D47AF17F243A743A0090DFAA /* AdvancedLoggerProtocol.swift in Sources */,
-				D4251BAE243B04FF002A41D4 /* ALEncryptionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +492,6 @@
 			files = (
 				D49342292446563800122C84 /* ALFileManagerTest.swift in Sources */,
 				D493422B2446580100122C84 /* AdvancedLoggerTest.swift in Sources */,
-				D49342282446563800122C84 /* ALCryptoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,6 +821,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D404060524686EC900D5F3DF /* XCRemoteSwiftPackageReference "ESCrypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ESKARIA/ESCrypto.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D404060624686EC900D5F3DF /* ESCrypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D404060524686EC900D5F3DF /* XCRemoteSwiftPackageReference "ESCrypto" */;
+			productName = ESCrypto;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D47AF142243A63AA0090DFAA /* Project object */;
 }

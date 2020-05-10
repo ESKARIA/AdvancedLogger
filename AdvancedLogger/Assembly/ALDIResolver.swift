@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ESCrypto
 
 protocol ALDIResolverComponentsProtocol {
     
@@ -19,7 +20,7 @@ protocol ALDIResolverComponentsProtocol {
     /// Logger crypto manager for encrypt and decrypt data
     /// - Parameters:
     ///   - keys: crypto key and initial vector
-    mutating func getALCryptoManager() -> ALCryptoManagerProtocol
+    mutating func getALCryptoManager() -> ESCryptoProtocol
     /// Logger write manager for write logs
     /// - Parameter cryptoKeys: crypto key and initial vector for encrypt and decrypt logs
     mutating func getALLogWriteManager() -> ALLogWriteManagerProtocol
@@ -35,7 +36,7 @@ struct ALDIResolver {
     private var alLogReadManager: ALLogReadManagerProtocol?
     private var alFileManager: ALFileDiskManagerProtocol?
     private var alPopulateManager: ALFilePopulateManagerProtocol?
-    private var alCryptoManager: ALCryptoManagerProtocol?
+    private var alCryptoManager: ESCryptoProtocol?
 }
 
 extension ALDIResolver: ALDIResolverComponentsProtocol {
@@ -62,12 +63,11 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
     
     /// Logger crypto manager for encrypt and decrypt dsata
     /// - Returns: crypto manager
-    mutating func getALCryptoManager() -> ALCryptoManagerProtocol {
+    mutating func getALCryptoManager() -> ESCryptoProtocol {
         if let _alCryptoManager = self.alCryptoManager {
             return _alCryptoManager
         }
-        self.alCryptoManager = ALCryptoManager(initKey: Constaints.Crypto.cryptoKey.rawValue,
-                                               initIV: Constaints.Crypto.cryptoInitialVector.rawValue)
+        self.alCryptoManager = ESCrypto.shared
         return self.alCryptoManager!
     }
     
