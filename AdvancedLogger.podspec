@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
     
     # 7
     s.framework = "Foundation"
-    s.dependency 'ESCrypto', '~> 0.0.1'
+    s.dependency 'ESCrypto', '~> 1.0.0'
     
     # 8
     s.source_files = "AdvancedLogger/**/*.{swift}"
