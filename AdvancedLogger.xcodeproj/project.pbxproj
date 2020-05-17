@@ -38,8 +38,9 @@
 		D47AF17B243A73B80090DFAA /* AdvancedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */; };
 		D47AF17F243A743A0090DFAA /* AdvancedLoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */; };
 		D490FB06245702AC00B2D657 /* AdvancedLoggerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D490FB05245702AC00B2D657 /* AdvancedLoggerModel.swift */; };
-		D49342292446563800122C84 /* ALFileManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49342272446563800122C84 /* ALFileManagerTest.swift */; };
 		D493422B2446580100122C84 /* AdvancedLoggerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493422A2446580100122C84 /* AdvancedLoggerTest.swift */; };
+		D493D0772471998600FD6F5D /* ESFileManager in Frameworks */ = {isa = PBXBuildFile; productRef = D493D0762471998600FD6F5D /* ESFileManager */; };
+		D493D07924719BE400FD6F5D /* Constaints+FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493D07824719BE400FD6F5D /* Constaints+FileStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,8 +108,8 @@
 		D47AF17A243A73B80090DFAA /* AdvancedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLogger.swift; sourceTree = "<group>"; };
 		D47AF17E243A743A0090DFAA /* AdvancedLoggerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerProtocol.swift; sourceTree = "<group>"; };
 		D490FB05245702AC00B2D657 /* AdvancedLoggerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerModel.swift; sourceTree = "<group>"; };
-		D49342272446563800122C84 /* ALFileManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALFileManagerTest.swift; sourceTree = "<group>"; };
 		D493422A2446580100122C84 /* AdvancedLoggerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedLoggerTest.swift; sourceTree = "<group>"; };
+		D493D07824719BE400FD6F5D /* Constaints+FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constaints+FileStorage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D493D0772471998600FD6F5D /* ESFileManager in Frameworks */,
 				D404060B24689AB900D5F3DF /* ESCrypto in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +156,7 @@
 				D47AF16C243A66E90090DFAA /* Constaints.swift */,
 				D4251BB4243B0F31002A41D4 /* Constaints+QueueName.swift */,
 				D4251BB6243B0F4E002A41D4 /* Constaints+Crypto.swift */,
+				D493D07824719BE400FD6F5D /* Constaints+FileStorage.swift */,
 			);
 			path = Constaints;
 			sourceTree = "<group>";
@@ -302,7 +305,6 @@
 		D49342252446563800122C84 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D49342272446563800122C84 /* ALFileManagerTest.swift */,
 				D493422A2446580100122C84 /* AdvancedLoggerTest.swift */,
 			);
 			path = Tests;
@@ -357,6 +359,7 @@
 			name = AdvancedLogger;
 			packageProductDependencies = (
 				D404060A24689AB900D5F3DF /* ESCrypto */,
+				D493D0762471998600FD6F5D /* ESFileManager */,
 			);
 			productName = AdvancedLogger;
 			productReference = D47AF14B243A63AA0090DFAA /* AdvancedLogger.framework */;
@@ -413,6 +416,7 @@
 			mainGroup = D47AF141243A63AA0090DFAA;
 			packageReferences = (
 				D404060524686EC900D5F3DF /* XCRemoteSwiftPackageReference "ESCrypto" */,
+				D493D0752471998600FD6F5D /* XCRemoteSwiftPackageReference "ESFileManager" */,
 			);
 			productRefGroup = D47AF14C243A63AA0090DFAA /* Products */;
 			projectDirPath = "";
@@ -483,6 +487,7 @@
 				D47AF174243A6B4B0090DFAA /* ALFilePopulateManagerProtocol.swift in Sources */,
 				D4251BC1243B1C2D002A41D4 /* ALLogWriteManagerProtocol.swift in Sources */,
 				D4251BB7243B0F4E002A41D4 /* Constaints+Crypto.swift in Sources */,
+				D493D07924719BE400FD6F5D /* Constaints+FileStorage.swift in Sources */,
 				D490FB06245702AC00B2D657 /* AdvancedLoggerModel.swift in Sources */,
 				D47AF16D243A66E90090DFAA /* Constaints.swift in Sources */,
 				D4251BC5243B24DF002A41D4 /* AdvancedLoggerEvent.swift in Sources */,
@@ -494,7 +499,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D49342292446563800122C84 /* ALFileManagerTest.swift in Sources */,
 				D493422B2446580100122C84 /* AdvancedLoggerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -835,6 +839,14 @@
 				version = 1.0.2;
 			};
 		};
+		D493D0752471998600FD6F5D /* XCRemoteSwiftPackageReference "ESFileManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ESKARIA/ESFileManager.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -842,6 +854,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D404060524686EC900D5F3DF /* XCRemoteSwiftPackageReference "ESCrypto" */;
 			productName = ESCrypto;
+		};
+		D493D0762471998600FD6F5D /* ESFileManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D493D0752471998600FD6F5D /* XCRemoteSwiftPackageReference "ESFileManager" */;
+			productName = ESFileManager;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

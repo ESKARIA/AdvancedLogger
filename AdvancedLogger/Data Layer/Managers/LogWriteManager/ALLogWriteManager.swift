@@ -54,7 +54,7 @@ extension ALLogWriteManager: ALLogWriteManagerProtocol {
                 maxSize: Int,
                 logType: AdvancedLoggerEvent) {
         self.queue.sync {
-            self.diskManager.read { (data) in
+            self.diskManager.read { (data, error) in
                 self.populateManager.populate(log: log,
                                               existData: data,
                                               isUsedEncryption: isEncrypted,

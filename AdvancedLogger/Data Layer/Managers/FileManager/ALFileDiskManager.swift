@@ -7,22 +7,21 @@
 //
 
 import Foundation
+import ESFileManager
 
 // MARK: - ALFileManager
 
 /// Manager for write and read file from bundle
 struct ALFileDiskManager {
     
-    private var directoryPath: String
+    private var fileNameModel: ESFileNameModel
+    private var fileManager: ESFileManagerProtocol
     
-    init(directoryPath: String) {
-        self.directoryPath = directoryPath
+    init(directoryPath: String, fileName: String) {
+        self.fileNameModel = ESFileNameModel(name: fileName, fileExtension: .txt)
+        self.fileManager = ESFileManager(defaultDirectory: .applicationSupport(customPath: directoryPath, useBackups: false))
     }
     
-    private func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0].appendingPathComponent(self.directoryPath)
-    }
 }
 
 // MARK: ALFileManagerProtocol Impletation
@@ -33,29 +32,27 @@ extension ALFileDiskManager: ALFileDiskManagerProtocol {
     /// - Parameters:
     ///   - data: data that need to be writed
     ///   - completion: completion block with optional Error
-    func write(data: Data, completion: (Error?) -> Void) {
-        do {
-            try data.write(to: self.getDocumentsDirectory())
-            completion(nil)
-        } catch {
+    func write(data: Data, completion: @escaping (Error?) -> Void) {
+        let file = ESFileModel(data: data, name: self.fileNameModel)
+        self.fileManager.write(file: file, at: nil) { (error) in
             completion(error)
+            return
         }
         
     }
     
     /// Read data from disk
     /// - Parameter completion: completion block with optional data from storage
-    func read(completion: (Data?) -> Void) {
-        completion(FileManager.default.contents(atPath: self.getDocumentsDirectory().path))
+    func read(completion: @escaping (Data?, Error?) -> Void) {
+        self.fileManager.read(fileStorage: self.fileNameModel, at: nil) { (fileModel, error) in
+            completion(fileModel?.data, error)
+        }
     }
     
     /// Remove log file from disk
     /// - Parameter completion: completion block with optional Error
-    func clean(completion: (Error?) -> Void) {
-        do {
-            try FileManager().removeItem(at: self.getDocumentsDirectory())
-            completion(nil)
-        } catch {
+    func clean(completion: @escaping (Error?) -> Void) {
+        self.fileManager.remove(file: self.fileNameModel, at: nil) { (error) in
             completion(error)
         }
         

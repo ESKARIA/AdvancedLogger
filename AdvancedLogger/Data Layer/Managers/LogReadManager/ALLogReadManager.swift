@@ -40,7 +40,8 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
     ///   - completion: completion блок
     func getLogs(isEncrypted: Bool, completion: @escaping ([AdvancedLoggerModel]?) -> Void) {
         self.queue.sync {
-            self.diskManager.read { (data) in
+            self.diskManager.read { (data, error)  in
+                
                 if let data = data {
                     
                     var resultData = Data()
@@ -58,7 +59,7 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
                         resultData = data
                     }
                     do {
-                        let resultLogs = try decoder.decode([AdvancedLoggerModel].self, from: resultData)
+                        let resultLogs = try self.decoder.decode([AdvancedLoggerModel].self, from: resultData)
                         completion(resultLogs)
                     } catch {
                         completion(nil)
@@ -76,7 +77,7 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
     ///   - completion: completion блок
     func getJSONLogs(isEncrypted: Bool, completion: @escaping (Data?) -> Void) {
         self.queue.sync {
-            self.diskManager.read { (data) in
+            self.diskManager.read { (data, error) in
                 if let data = data {
                     var resultData: Data?
                     switch isEncrypted {

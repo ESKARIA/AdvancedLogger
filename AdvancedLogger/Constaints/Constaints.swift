@@ -11,6 +11,5 @@ import Foundation
 /// Constaint that used in app
 enum Constaints: String {
     
-    case documentDirectoryPath = "AdvancedLogger.txt"
     case logDateFormat = "MM-dd-yyyy HH:mm:ss"
 }

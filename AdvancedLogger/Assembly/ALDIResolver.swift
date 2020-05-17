@@ -47,7 +47,7 @@ extension ALDIResolver: ALDIResolverComponentsProtocol {
         if let _alFileManager = self.alFileManager {
             return _alFileManager
         }
-        self.alFileManager = ALFileDiskManager(directoryPath: Constaints.documentDirectoryPath.rawValue)
+        self.alFileManager = ALFileDiskManager(directoryPath: Constaints.FileStorage.documentDirectoryPath.rawValue, fileName: Constaints.FileStorage.fileName.rawValue)
         return self.alFileManager!
     }
     
