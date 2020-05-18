@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
     # 7
     s.framework = "Foundation"
     s.dependency 'ESCrypto', '~> 1.0.2'
+    s.dependency 'ESPFileManager', '~> 0.0.5'
     
     # 8
     s.source_files = "AdvancedLogger/**/*.{swift}"
