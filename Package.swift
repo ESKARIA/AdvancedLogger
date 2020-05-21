@@ -15,13 +15,14 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
          .package(url: "https://github.com/ESKARIA/ESCrypto.git", from: "1.0.2"),
+         .package(url: "https://github.com/ESKARIA/ESFileManager.git", from: "0.0.5"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "AdvancedLogger",
-            dependencies: ["ESCrypto"],
+            dependencies: ["ESCrypto", "ESFileManager"],
             path: "AdvancedLogger"),
         .testTarget(
             name: "AdvancedLoggerTests",

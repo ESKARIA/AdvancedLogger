@@ -9,6 +9,15 @@
           "revision": "7b3d67c09d3cf16b4bdbdf6b442ace6b73eadd22",
           "version": "1.0.2"
         }
+      },
+      {
+        "package": "ESFileManager",
+        "repositoryURL": "https://github.com/ESKARIA/ESFileManager.git",
+        "state": {
+          "branch": null,
+          "revision": "7cf3954abe4c78e6f5a4e40e92d4b1465233d82b",
+          "version": "0.0.5"
+        }
       }
     ]
   },
