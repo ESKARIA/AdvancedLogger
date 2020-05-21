@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ESCrypto
 
 // MARK: - ALLogReadManager
 
@@ -14,12 +15,12 @@ import Foundation
 struct ALLogReadManager {
     
     private var diskManager: ALFileDiskManagerProtocol
-    private var cryptoManager: ALCryptoManagerProtocol
+    private var cryptoManager: ESCryptoProtocol
     private var queue: DispatchQueue
     private let decoder: JSONDecoder
     
     init(diskManager: ALFileDiskManagerProtocol,
-         cryptoManager: ALCryptoManagerProtocol,
+         cryptoManager: ESCryptoProtocol,
          queueLabel: String,
          qos: DispatchQoS) {
         self.diskManager = diskManager
@@ -39,16 +40,17 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
     ///   - completion: completion блок
     func getLogs(isEncrypted: Bool, completion: @escaping ([AdvancedLoggerModel]?) -> Void) {
         self.queue.sync {
-            self.diskManager.read { (data) in
+            self.diskManager.read { (data, error)  in
+                
                 if let data = data {
                     
                     var resultData = Data()
                     
                     switch isEncrypted {
                     case true:
-                        self.cryptoManager.decrypt(data: data) { (log, error) in
+                        self.cryptoManager.decrypt(data: data, cryptoType: .aes) { (log, error) in
                             if let error = error {
-                                NSLog("AdvancedLogger error while get string log: \(error.errorDescription)")
+                                NSLog("AdvancedLogger error while get string log: \(error)")
                                 return
                             }
                             resultData = log ?? Data()
@@ -57,7 +59,7 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
                         resultData = data
                     }
                     do {
-                        let resultLogs = try decoder.decode([AdvancedLoggerModel].self, from: resultData)
+                        let resultLogs = try self.decoder.decode([AdvancedLoggerModel].self, from: resultData)
                         completion(resultLogs)
                     } catch {
                         completion(nil)
@@ -75,14 +77,14 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
     ///   - completion: completion блок
     func getJSONLogs(isEncrypted: Bool, completion: @escaping (Data?) -> Void) {
         self.queue.sync {
-            self.diskManager.read { (data) in
+            self.diskManager.read { (data, error) in
                 if let data = data {
                     var resultData: Data?
                     switch isEncrypted {
                     case true:
-                        self.cryptoManager.decrypt(data: data) { (log, error) in
+                        self.cryptoManager.decrypt(data: data, cryptoType: .aes) { (log, error) in
                             if let error = error {
-                                NSLog("AdvancedLogger error while get string log: \(error.errorDescription)")
+                                NSLog("AdvancedLogger error while get string log: \(error)")
                                 return
                             }
                             resultData = log
@@ -99,6 +101,7 @@ extension ALLogReadManager: ALLogReadManagerProtocol {
     /// update crypto keys for cryptomanager
     /// - Parameter keys: new keys
     mutating func update(cryptoKeys keys: ALAESCryptoInitModel) throws {
-        try self.cryptoManager.update(cryptoKeys: keys)
+        self.cryptoManager.cryptoKeys = .init(aesCryptoKeys: ESAESCryptoKeysModel(aesCryptoKey: keys.cryptoKey,
+                                                                                      aesInitialVector: keys.initialVector))
     }
 }

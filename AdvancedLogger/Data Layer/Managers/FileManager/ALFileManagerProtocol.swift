@@ -17,11 +17,11 @@ protocol ALFileDiskManagerProtocol {
     /// - Parameters:
     ///   - data: data that need to be writed
     ///   - completion: completion block with optional Error
-    func write(data: Data, completion: (Error?) -> Void)
+    func write(data: Data, completion: @escaping (Error?) -> Void)
     /// Read data from disk
     /// - Parameter completion: completion block with optional data from storage
-    func read(completion: (Data?) -> Void)
+    func read(completion: @escaping (Data?, Error?) -> Void)
     /// Remove log file from disk
     /// - Parameter completion: completion block with optional Error
-    func clean(completion: (Error?) -> Void)
+    func clean(completion: @escaping (Error?) -> Void)
 }

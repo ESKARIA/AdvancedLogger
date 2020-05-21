@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ESCrypto",
+        "repositoryURL": "https://github.com/ESKARIA/ESCrypto.git",
+        "state": {
+          "branch": null,
+          "revision": "7b3d67c09d3cf16b4bdbdf6b442ace6b73eadd22",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "ESFileManager",
+        "repositoryURL": "https://github.com/ESKARIA/ESFileManager.git",
+        "state": {
+          "branch": null,
+          "revision": "dd76a498e0304194dcc137c5a7e875fe712616db",
+          "version": "0.0.6"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
