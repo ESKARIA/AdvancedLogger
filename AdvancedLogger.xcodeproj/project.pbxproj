@@ -844,7 +844,7 @@
 			repositoryURL = "https://github.com/ESKARIA/ESFileManager.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.0.4;
+				version = 0.0.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "AdvancedLogger",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v11), .macOS(.v10_12)],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
          .package(url: "https://github.com/ESKARIA/ESCrypto.git", from: "1.0.2"),
-         .package(url: "https://github.com/ESKARIA/ESFileManager.git", from: "0.0.5"),
+         .package(url: "https://github.com/ESKARIA/ESFileManager.git", from: "0.0.6"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.

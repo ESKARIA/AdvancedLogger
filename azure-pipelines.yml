@@ -15,7 +15,7 @@ steps:
   inputs:
     actions: 'test'
     scheme: 'AdvancedLogger'
-    sdk: 'iphoneos'
+    sdk: 'macosx'
     configuration: 'Debug'
     xcWorkspacePath: 'AdvancedLogger.xcodeproj'
     signingOption: "auto"
